@@ -1,0 +1,43 @@
+
+\documentclass[a4paper,11pt,twoside]{report}
+\usepackage[left=2cm,right=2cm,top=2cm,bottom=3cm]{geometry}
+
+\include{thesis.preamble}
+\graphicspath{ {images/} }
+
+\begin{document}
+
+\title{\LARGE {\bf HuddleTable}\\
+ \vspace*{6mm}
+}
+
+\author{Jose Kalladanthyil}
+\submitdate{June 2015}
+
+\normallinespacing
+\maketitle
+
+\preface
+\input{abstract/abstract}
+\input{acknowledgements/acknowledgements}
+\input{dedication/dedication}
+\input{quotes/quotes}
+
+\body
+\input{introduction/introduction}
+\input{background/background}
+\input{AndroidCamera/AndroidCamera}
+% body of thesis comes here
+\input{NoCamera/NoCamera}
+
+\input{conclusion/conclusion}
+
+\appendix
+% appendices come here
+
+
+\addcontentsline{toc}{chapter}{Bibliography}
+\bibliographystyle{abbrv}
+\bibliography{bibliography/final-report}
+
+\end{document}
