@@ -1,7 +1,10 @@
 
 \documentclass[a4paper,11pt,twoside]{report}
 \usepackage[left=2cm,right=2cm,top=2cm,bottom=3cm]{geometry}
+\usepackage[sorting=none]{biblatex}
+\usepackage{todonotes}
 
+\bibliography{bibliography/final-report}
 \include{thesis.preamble}
 \graphicspath{ {images/} }
 
@@ -20,24 +23,32 @@
 \preface
 \input{abstract/abstract}
 \input{acknowledgements/acknowledgements}
-\input{dedication/dedication}
 \input{quotes/quotes}
 
 \body
 \input{introduction/introduction}
 \input{background/background}
+
+% Android Camera Implementation
 \input{AndroidCamera/AndroidCamera}
-% body of thesis comes here
+\input{AndroidCamera/language}
+\input{AndroidCamera/Evaluation}
+
+% Bluetooth Implementation
 \input{NoCamera/NoCamera}
+\input{NoCamera/PositionAlgorithm}
+\input{NoCamera/BeaconVendors}
+\input{NoCamera/Evaluation}
 
 \input{conclusion/conclusion}
 
+\todo[inline]{thesis.tex: Appendix Location}
 \appendix
 % appendices come here
+\input{Appendix/Appendix}
 
 
 \addcontentsline{toc}{chapter}{Bibliography}
-\bibliographystyle{abbrv}
-\bibliography{bibliography/final-report}
-
+\printbibliography
+\listoftodos
 \end{document}

@@ -2,105 +2,9 @@
 
 \label{ch:devcamera}
 \section{Design Choices}
-\subsection{Language choice}
-
-
-\subsubsection{Java}
-
-Java is one of the most widely used language fro development. It also
-has the unique advantage that Java programs compiles to a Java Bytecode,
-which runs on a Java Virtual Machine. This means that as a developer
-they would only usually have to create the program once and it would
-run on most machines. 
-
-Java also happens to be the native language for Android, making it
-an ideal choice of language for an Android developer. Android platform
-has a market share of around 81.5\%\cite{market-share}. Which means
-creating a library for android made the perfect sense. More people
-are likely to have an Android device during a meeting and also there
-is a more likely hood that there would a lot more spare Android devices
-which can be used to create the screen for the table. Android devices
-are also extremely cheap which means even if the users had to buy
-some devices to use the interactive table it would be relatively cheap.
-
-By creating the library in Java there would be more likely hood for
-adoption by other users due to the ease in which someone could pick
-it up and also due to the large number of Android developers other
-there already. There are lot of vendors that produce cheap Android
-devices\cite{cheap-android}. 
-
-One of the biggest disadvantage of using Android devices with BLE
-technology is the the Android Bluetooth Crash bug\cite{bluetooth-share}.
-There is a bug in Bluetooth stack of Android where an Android device
-can only see 1,990 different Bluetooth MAC addresses before the Android
-BluetoothService crashes. Android also periodically saves its list
-of recent mac address which means this stored list could get filled
-up pretty quickly. Small iBeacons such as the Gimbal by Qualcomm generates
-a new MAC address for itself every 0.8 seconds which means this list
-could get filled very quickly. When is this list gets filled up an
-error dialog saying \textquotedbl{}Unfortunately, Bluetooth Share
-has Stopped\textquotedbl{} shows up. The only real solution to this
-problem is a downloading an called Bluetooth Crash Resolver by radius
-network which is not a perfect solution but the best there is right
-now.
-
-
-\subsubsection{Object C/Swift}
-
-Object C/ Swift is native language for iOS platform used by the Apple
-devices. With a 14.8\% market share iOS is the second biggest smartphone
-platform out there\cite{market-share}. They recently brought out
-another language called Swift which is also another language that
-could used for development in the iOS platform. iOS was a platform
-that was brought in 2007 and over the last 8 years, over one billion
-iOS devices has been sold\cite{oneBios}.
-
-Over 1.4 million iOS applications has been published in Apples App
-store, showing that large number of developers has adopted Apple products
-and are creating Apps for the platform. Apple is also the company
-the coined the term iBeacon which are a ``new class of low-powered,
-low-cost transmitters that can notify nearby iOS 7 or 8 devices of
-their presence.'' This means that iOS platform has a more mature
-codebase for BLE technology and also there are a lot more support
-for it. The iOS CoreLocation\cite{corelocation} framework is a relatively
-more accurate feature giving iOS a very good advantage while working
-with BLE technology. The Bluetooth stack used by Apple product is
-a much more efficient one.
-
-However for a developer there quite a lot of requirements before being
-able to develop for an Apple platform. Unlike Android development
-an iOS developer needs to have an Apple computer and a Apple developer
-License before they can create apps for the platform, neither of which
-are cheap. Apple devices are also rather expensive to buy and there
-fore unlike for people to have it just laying around.
-
-
-\subsubsection{JavaScript}
-
-JavaScript is also another viable language for creating applications
-for mobile devices especially since the introduction of frameworks
-such as PhoneGap\cite{phonegap} and Ionic\cite{ionic}. Mobile Frameworks
-such as these work on top Apache Cordova which allows developers to
-create a application using web technologies such as HTML5, CSS3 and
-JavaScript instead of using the platform specific APIs like those
-in iOS and Android. Cordova wraps these web application to work on
-different devices. These applications are called Hybrid applications
-since they are not truly native mobile application or web application.
-
-The use of web-based technologies leads many PhoneGap applications
-to run slower than native applications with similar functionality.
-However PhoneGap supports development for iOS, Blackberry, Android,
-LG webOS, Microsoft Windows Phone (7 and 8), Nokia Symbian OS, Tizen
-(SDK 2.x), Bada, Firefox OS, and Ubuntu Touch making it one of the
-best language to use while creating an application to get the most
-exposure for the library. it also supports most of the features of
-a phone that a native language does as well like Accelerometer, Compass
-etc as shown in \ref{tab:PhoneGap-table}.
 
 
 \subsection{Data Storage}
-
-
 \subsubsection{Firebase}
 
 Firebase\cite{firebase} is a relatively new back-end as a service
@@ -108,9 +12,9 @@ company recently acquired by Google. They are a cloud service provider
 from San Francisco who caters a number of products for software developers
 building mobile or web application. The service we are more interested
 is their Real-time Database service. It provides developers with an
-API that which enables data to be synchronized across clients automatically
+API that which enables data to be synchronised across clients automatically
 and stored on the Firebase cloud. The main advantage is the fact that
-the data gets synchronized within milliseconds. It also supports a
+the data gets synchronised within milliseconds. It also supports a
 multitude of platforms such as Android, iOS, JavaScript etc.
 
 It also only requires client-side code meaning the developers has
@@ -125,15 +29,15 @@ that the security measures are enforced across all parts of the system,
 It helps the developer in eradicating glaring security risks. Firebase
 built with scaling and performance in mind. When the data changes
 Firebase calculates the minimum number of changes required to keep
-all the clients in synch. It also scales linearly depending on the
-amount of data being synchronized, decreasing the likely hood of a
+all the clients in sync. It also scales linearly depending on the
+amount of data being synchronised, decreasing the likely hood of a
 developer error. 
 
 The potential of Firebase is enormous. The creators of Firebase hope
 that it can serve the needs of 95\% of web service\cite{firebase-wired},
 meaning it will be an ideal tool in the stack of our system. One of
 its glaring problems is the it is not ideal for processing images,
-however the real-time data synchronization aspect of it make it a
+however the real-time data synchronisation aspect of it make it a
 really good candidate for the HuddleTable.
 
 
@@ -148,7 +52,7 @@ it would cut down on the work required to get most of the devices
 to work. It is tightly coupled with the MongoDB, a prominent No-SQL
 database. It has an in built publish\textendash subscribe pattern\cite{pub-sub-pattern}
 which helps to propagate data changes to clients in real-time without
-the need for synchronization protocols.
+the need for synchronisation protocols.
 
 Some of the design principles used by Meteor makes it a really good
 choice for HuddleTable. It has a Data on the wire motivation meaning,
@@ -164,7 +68,7 @@ They developed an Object storage on top of Meteor so that all manipulations
 on one device become instantly visible on all the other devices. This
 allowed the cross platform collaborative work to be done with ease.
 Having to only work with one language, JavaScript, on the whole project
-means a lot less work for the developer, however the complext algorithm
+means a lot less work for the developer, however the complex algorithm
 required for HuddleTable would not be enticing to do in JavaScript.
 
 
@@ -177,7 +81,7 @@ that has been widely appreciated by Apple users and highly congratulated
 on. The simple interface to send files back and forth without any
 ``handshake'' like system and having no restrictions in size of
 the files transferred means its a highly appreciated technology which
-doesn't require internet for it to work. It also has built in function
+does not require Internet for it to work. It also has built in function
 to control the recipients of the information sent. AirDrop creates
 a peer-to-peer Wi-Fi network between the devices and the files are
 sent encrypted which means the file transfer is also secure.
@@ -193,6 +97,6 @@ available on all Android devices.
 These technologies are restricted because they would only work with
 each other. By creating a protocol similar to this which would work
 across platform would be an ideal scenario. That would mean that the
-devices does not need to be connected to the internet creating an
+devices does not need to be connected to the Internet creating an
 opportunity to make an ad-hoc interactive table anywhere.
 
