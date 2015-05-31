@@ -33,7 +33,8 @@ Most BLE libraries has a method which gives the distance from the beacon to devi
 The second option is for me to redo the observation to get the resulting RSSI signal and TxPower for each distances and get a line of best fit to work out the distance. However this would mean that my library would be tailored to the set of beacons I had instead of being a general library. This would be defeating the point of this system. However in section \textbf{do thhis evaluation} we will see how I had to do both type of distancing.
 
 \subsubsection{Distance App}
-Originally I created an Application which showed the distance from the beacon using \lstinline|computeAccuracy()| method. Figure _ shows 
+Originally I created an Application which showed the distance from the beacon using \lstinline|computeAccuracy()| method. Figure \_ shows the UI for the application. It shows the list, ordered by the distance, of nearby beacons. It also shows other information such as the RSSI value, Transmission Power \ldots
+It is a list that keeps updating as new BLE readings come in and and update the RSSI and Transmition power.
 
 \begin{enumerate}
 \item problem 
