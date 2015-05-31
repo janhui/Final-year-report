@@ -1,11 +1,15 @@
 
 \documentclass[a4paper,11pt,twoside]{report}
 \usepackage[left=2cm,right=2cm,top=2cm,bottom=3cm]{geometry}
-\usepackage[sorting=none]{biblatex}
-\usepackage{todonotes}
+
+  
+
 
 \bibliography{bibliography/final-report}
+\bibliographystyle{abbrv}
 \include{thesis.preamble}
+%needs to be last package imported!
+\usepackage{hyperref}
 \graphicspath{ {images/} }
 
 \begin{document}
@@ -38,6 +42,7 @@
 \input{NoCamera/NoCamera}
 \input{NoCamera/PositionAlgorithm}
 \input{NoCamera/BeaconVendors}
+\input{NoCamera/Implementation}
 \input{NoCamera/Evaluation}
 
 \input{conclusion/conclusion}

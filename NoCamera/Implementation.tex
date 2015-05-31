@@ -1,0 +1,45 @@
+\section{Implementation}
+
+In this section I will be talking about my attempt in recreating the HuddleLamp project but without the camera. I will be talking about my trial of using Bluetooth Low Energy technology and Sensors to recreate the positioning algorithm and object tracking features of the HuddleLamp. 
+\todo[inline]{Implementation.tex: talk about firebase mayb?}
+
+
+\subsection{Introduction?? not sure about the name!!!}
+HuddleLamp was a project that introduced some novel ideas such as the Hybrid sensing approach in tracking devices. It successfully initiated a discussion into spatially aware mobile devices. By utilising various technologies and devices they were able to bring the idea into fruition. 
+
+However there are some drawbacks to the product, such as needing to carry around a computer, stand and a camera for the algorithm to work. The space that we could use, as the canvas of the application, was limited by the area which the camera could see. This area depended on how high the camera was from the table. Another drawback noticed by \citeauthor{huddelamp-paper} was the noticeable delay between the physical movement of a screen and the corresponding reaction of the UI\cite{huddelamp-paper}. 
+
+I am going to try and address some of these drawbacks by using a combination of BLE and Sensor fusion instead of a camera for my tracking and positioning system. I would be creating an Android application which means the computer would be unnecessary. It should also provide a better reaction time. 
+
+I hope to make this into a library such that it would be easier to create applications to be used on the interactive table. Currently there is no clear documentation on how to create an application for HuddleLamp. By creating a library to work out the current location for the application and the scrolling on a screen, the majority of the complexity could be converted into a "blackbox" that the developers would not have to worry about. I plan to have a library that could cater to the needs of most developers. 
+
+\todo[inline]{Implementation.tex:create a google form to work out interactions i.e map following, gesture controls, drawing?}
+
+\subsection{Architecture}
+ Figure[\todo[inline]{Implementation.tex: create architecture}]
+ \begin{enumerate}
+ \item physical diagram of the table with beacons
+ \item software diagram of main activity \-->library \--> kalman filter \--> activity
+ \end{enumerate}
+ I plan to have an arrangement where there is at least are Bluetooth Beacons around the table like show in Figure \_. Using those Beacons as reference nodes I am hoping to calculate the position of a device on the table.
+
+\subsection{Applications}
+My research about Bluetooth Low Energy (BLE) technology has shown that there are more than one way to work out the distance of a device emitting the BLE signals and the receiver.
+
+\begin{enumerate}
+\item problem 
+\item how I am going to solve it.
+\item What I did
+\item evaluation
+\end{enumerate}
+    
+\end{itemize}
+
+\begin{itemize}
+  \item Distance app
+  \item Trilateration
+  \item Sensor
+  \item Where is Waldo for trilateration
+  \item where is waldo for sensor
+  \item Canvas
+\end{itemize}
