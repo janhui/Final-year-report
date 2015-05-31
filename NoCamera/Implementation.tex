@@ -16,15 +16,24 @@ I hope to make this into a library such that it would be easier to create applic
 \todo[inline]{Implementation.tex:create a google form to work out interactions i.e map following, gesture controls, drawing?}
 
 \subsection{Architecture}
- Figure[\todo[inline]{Implementation.tex: create architecture}]
+\todo[inline]{Implementation.tex: create architecture figure}
  \begin{enumerate}
  \item physical diagram of the table with beacons
- \item software diagram of main activity \-->library \--> kalman filter \--> activity
+ \item software diagram of main activity \-\->library \-\-> kalman filter \-\-> activity
  \end{enumerate}
  I plan to have an arrangement where there is at least are Bluetooth Beacons around the table like show in Figure \_. Using those Beacons as reference nodes I am hoping to calculate the position of a device on the table.
 
 \subsection{Applications}
-My research about Bluetooth Low Energy (BLE) technology has shown that there are more than one way to work out the distance of a device emitting the BLE signals and the receiver.
+My research about Bluetooth Low Energy (BLE) technology has shown that there are more than one way to work out the distance between the device emitting the BLE signal and the receiver. 
+\begin{enumerate}
+\item Accuracy
+\item RSSI signal
+\end{enumerate}
+Most BLE libraries has a method which gives the distance from the beacon to device. Accuracy is a term coined by Apple for their CoreLocation framework to define the distance in meters from the beacon. For estimote beacons the methods is called  \lstinline|computeAccuracy()| which gets the distance. Similar to the Apple function, the calculation done to get this result is hidden by estimote in their library. However doing more research into some open source libraries \textbf{fix this}\cite{radius-ranging} we can make an educated guess that the distance was calculted by observing RSSI and TxPower values at certain distance intervals and making a line of best fit.
+The second option is for me to redo the observation to get the resulting RSSI signal and TxPower for each distances and get a line of best fit to work out the distance. However this would mean that my library would be tailored to the set of beacons I had instead of being a general library. This would be defeating the point of this system. However in section \textbf{do thhis evaluation} we will see how I had to do both type of distancing.
+
+\subsubsection{Distance App}
+Originally I created an Application which showed the distance from the beacon using \lstinline|computeAccuracy()| method. Figure _ shows 
 
 \begin{enumerate}
 \item problem 
