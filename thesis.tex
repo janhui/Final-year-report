@@ -1,7 +1,7 @@
 
 \documentclass[a4paper,11pt,twoside]{report}
 \usepackage[left=2cm,right=2cm,top=2cm,bottom=3cm]{geometry}
-
+\usepackage[toc,page]{appendix}
   
 
 
@@ -49,10 +49,12 @@
 \input{conclusion/conclusion}
 
 \todo[inline]{thesis.tex: Appendix Location}
+
 \appendix
 % appendices come here
+\begin{appendices}
 \input{Appendix/Appendix}
-
+\end{appendices}
 
 \addcontentsline{toc}{chapter}{Bibliography}
 \printbibliography

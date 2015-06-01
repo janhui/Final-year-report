@@ -29,16 +29,31 @@ My research about Bluetooth Low Energy (BLE) technology has shown that there are
 \item Accuracy
 \item RSSI signal
 \end{enumerate}
-Most BLE libraries has a method which gives the distance from the beacon to device. Accuracy is a term coined by Apple for their CoreLocation framework to define the distance in meters from the beacon. For estimote beacons the methods is called  \lstinline|computeAccuracy()| which gets the distance. Similar to the Apple function, the calculation done to get this result is hidden by estimote in their library. However doing more research into some open source libraries \textbf{fix this}\cite{radius-ranging} we can make an educated guess that the distance was calculted by observing RSSI and TxPower values at certain distance intervals and making a line of best fit.
-The second option is for me to redo the observation to get the resulting RSSI signal and TxPower for each distances and get a line of best fit to work out the distance. However this would mean that my library would be tailored to the set of beacons I had instead of being a general library. This would be defeating the point of this system. However in section \textbf{do thhis evaluation} we will see how I had to do both type of distancing.
+Most BLE libraries has a method which gives the distance from the beacon to device called Accuracy. Accuracy is a term coined by Apple for their CoreLocation framework to define the distance in meters from the beacon. For Estimote beacons the method is called  \lstinline|computeAccuracy()|. Similar to the Apple function, the calculation done to get this result is hidden by Estimote in their library. However doing more research into some open source libraries \textbf{fix this}\cite{radius-ranging} we can make an educated guess that the distance was calculated by observing RSSI and TxPower values at certain distance intervals and making a line of best fit.
+The second option is for me to redo the observation to get the resulting RSSI signal and TxPower for each distances and get a line of best fit to work out the distance. However this would mean that my library would be tailored to the set of beacons I have, instead of being a general library. This would be defeating the point of this project. However in section \textbf{do thhis evaluation} we will see how I had to do both type of distancing.
 
 \subsubsection{Distance App}
 Originally I created an Application which showed the distance from the beacon using \lstinline|computeAccuracy()| method. Figure \_ shows the UI for the application. It shows the list, ordered by the distance, of nearby beacons. It also shows other information such as the RSSI value, Transmission Power \ldots
-It is a list that keeps updating as new BLE readings come in and and update the RSSI and Transmition power.
+It is a list that keeps updating as new BLE readings come in and and update the RSSI and Transmission power.
+\todo[inline]{insert pic of the distance app}
+
+\subsection{Trilateration}
+
+By creating the Distance app, I was able to familiarise myself with the Estimote library. This aided me in creating the trilateration part of the library. I decided to stick to a Cartesian coordinate system for my design and created a \lstinline|Position| class which kept track of the x and y position of the devices. I also created a \lstinline|FixedBeacon| class which stored the reference beacon and its location.
+
+Using these new additions I was able to create a method that calculated the position of the receiver on the table. \lstinline|Position calculatePosition(List<FixedBeacon> beaconList)| It requires a list of reference beacons and calculate the distance from those reference beacons. It uses the calculation shown in section \_ to determine the position of the receiver. 
+\todo[inline]{evaluate by coordinate system grid!}
+Figure \_ shows the output of the calculation which I used for my evaluation in section \_
+
+\subsection{Sensors}
+During the implementation and evaluation of the Distance app and Trilateration app, it was clear that something else needs to be augmented with BLE for the location system to have chance of being successful. Therefore inspired by the Hybrid sensing method used by HuddleLamp, I decided to add sensor fusion to the positioning algorithm. Having accelerometer to calculate the movement, plus BLE trilateration result together should cancel out some errors given by each other, creating a more accurate positioning system.
+
+After my research into available sensors, the most useful sensors available was the accelerometer. Eventhough most devices have a gyroscope, the use cases of my library did not require the device to be tilted in any way hence gyroscope was not necessary. This meant that on a station device there was always an acceleration of 1g in the z axis due to the effect of gravity on the device. Therefore I have a calibration step for my sensor where the device polls the sensor for 1 second and use the average values in all 3 axis as the zero error. This value will be taken away from any values given by the accelerometer.
+
+As my research in sensors, in section \_, shows the process of calculating displacement from accelerometer values was by integrating the values twice. After doing some research into numerical integration methods, the most simple method was the ideal thing to use as a proof of concept. I used a simple trapezium rule where I averaged the acceleration value for each second and then integrated it twice by getting the area under the curve for that second twice. by using fixed variables it was possible to chance the chunk sizes from 1 second to something smaller if more finer results were needed.
+Figure _ shows the UI of the application that showed the accelerometer values in x, y and z axis and also the displacement in the x and y axis.
 
 \begin{enumerate}
-\item problem 
-\item how I am going to solve it.
 \item What I did
 \item evaluation
 \end{enumerate}
@@ -46,9 +61,6 @@ It is a list that keeps updating as new BLE readings come in and and update the 
 \end{itemize}
 
 \begin{itemize}
-  \item Distance app
-  \item Trilateration
-  \item Sensor
   \item Where is Waldo for trilateration
   \item where is waldo for sensor
   \item Canvas
