@@ -14,6 +14,25 @@ One of the big problems face during this test was the Bluetooth Share Bug\cite{b
 \todo [inline]{find android versions}
 \subsection{Displacement}
 Another major facet of my project was the sensor fusion idea to get the positioning correct. I decided to conduct a test for this by moving the tablet across a distance of 5 - 50 cm in every 5 cm intervals and calculating the displacement. Table() shows the results for it.
+\begin{figure}
+\centering
+\fbox{
+\begin{tikzpicture}
+\begin{axis}[
+    enlargelimits=false,    
+    title={},
+    xlabel={Actual Distance (m)},
+    ylabel={Calculated Distance (m)},
+    legend pos=north west,
+]
+\addplot table [only marks, mark = *] {\distance_old_rssi};
+\addplot [thick, red] table[y={create col/linear regression={y=X}}]{\distance_old_rssi};
+\end{axis}
+\end{tikzpicture}}
+\caption{Graph to show the relationship of (RSSI/Transmission Powen) and Distance}
+\label{fig:my_label}
+\end{figure}
+
 \subsubsection{Problems}
 
 \subsection{Trilateration}

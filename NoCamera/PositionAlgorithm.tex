@@ -2,7 +2,7 @@
 \subsection{Positioning algorithms}
 
 
-\subsubsection{Ecolocation}
+\subsubsection{Ecolocation} \label{ecolocation}
 
 Ecolocation\cite{Ecolocation} is a technique which uses RF and distance
 to work out the location of a node in a Wireless Sensor Network (WSN).
@@ -53,96 +53,63 @@ ideal in a system mainly targeting mobile devices.
 
 
 \subsubsection{Trilateration} \label{trilateration_section}
+Another technique that is widely used for positioning through RF signals is called Trilateration. Trilateration estimates the position of the receiver by using the strength of signals received from multiple non-collocated, non- collinear transmitters\cite{trilat-characteristics}. Generally this technique is called Multilateration. To get the position estimate in \textit{n} dimensions we need \textit{n+1} transmitters, i.e to get a 2D position estimate we need 3 transmitters. Its called Trilateration when we use three transmitters.
 
-Trilateration is the process of finding an absolute point or a relative
-point of an object using measured distances between the object and
-multiple reference points. Trilateration works by finding the intersection
-of three circles centered at anchor as the position of the node. The
-general equation of a sphere is :
-\[
-d^{2}=x^{2}+y^{2}+z^{2}
-\]
-
-
-For a sphere centered at a point (x\textsubscript{a} , y\textsubscript{a}
-, z\textsubscript{a}) where x$_{a}$is at the origin and x$_{b}$is
-the x coordinate of d$_{b}$ the equation is simplified as:
-
+Using the relation between signal strength and distance shown in \eqref{distance_formulae} and estimate of the distance between the device and each transmitter can be obtained.
+\begin{figure}[h]
+\begin{equation} \label{distance_formulae}
+\centering
+a = b+20\times log(\lambda/4 \pi) + 10\timesn\times log(1/d)
+\end{equation}
+\begin{tabular}{@{}>{$}l<{$}l@{}}
+    a & power at the receiver\\
+    b & transmitter power (in dBm)\\
+    \lambda &  wavelength\\
+    n & path loss exponent (n = 2 in free space)\\
+    d & is the distance between the transmitter and receiver
+  \end{tabular}
+\end{figure}
+\begin{figure}
+\centering
+\includegraphics[scale=0.5]{trilat}
+\caption{a- shows when there is perfect information, b- shows when there is imperfect information}
+\label{trilat_image}
+\end{figure}
+With perfect information we are able to calculate an exact unique position for the receiver. However we are more likely to get imperfect information which means the circles might not meet at a unique position. In such scenario we use a point that simultaneously minimises the distance to all circles. Figure \ref{trilat_image} shows both scenarios.
 \begin{figure}[H]
-\[
-d_{a}^{2}=x^{2}+y^{2}+z^{2}
-\]
-
-
-\[
-d_{b}^{2}=\left(x-x_{b}\right)^{2}+y^{2}+z^{2}
-\]
-
-
-\[
-d_{c}^{2}=\left(x-x_{c}\right)^{2}+\left(y-y_{c}\right)^{2}+\left(z-z_{c}\right)^{2}
-\]
-
-
-\protect\caption{Equation of 3 spheres}
-
-
+\begin{lstlisting}[caption = {Algorithm for Trilateration\cite{sig-cart}},frame=single,mathescape, captionpos=b,numbers=left,numbersep=5pt,label={psuedo-code}]
+Input: Array of APs: ap_list
+Input: Array of Floats: distance_list
+Input: Point: min
+Input: Point: max
+Input: Float: step
+Integer: nb_ap  ap_list.size()
+Float: d_min <- $\infty$
+Float: xm <- x <- minx
+Float: ym <- y <- miny
+while x <= maxx do
+    y <- miny
+    while y <= maxy do
+        Float: d_max <- 0
+        for i <- 0 to nb_ap do
+            if distance(x, y, ap_list[i], distance_list[i]) > d_max then
+                d_max <- distance(x, y, ap_list[i], distance_list[i])
+            end if
+        end for
+        if d_max <= d_min then
+            d_min <- d_max
+            xm <- x
+            ym <- y
+        end if
+        y<- y + step
+    end while
+    x <- x + step
+end while
+return xm, ym
+\end{lstlisting}
 \end{figure}
 
-
-We need to find a position (x, y, z) that satisfies all three equations.
-We can use d$_{a}$ and d$_{b}$ to eliminate y and z from the equation
-so that we can solve for x. i.e.
-
-\begin{figure}[H]
-\[
-d_{a}^{2}-d_{b}^{2}=x^{2}-\left(x-x_{b}\right)^{2}
-\]
-
-
-\[
-d_{a}^{2}-d_{b}^{2}=x^{2}-\left(x^{2}-2xx_{b}+d^{2}\right)
-\]
-
-
-\[
-d_{a}^{2}-d_{b}^{2}=2xx_{b}-d^{2}
-\]
-
-
-\[
-x=\frac{d_{a}^{2}-d_{b}^{2}+d^{2}}{2x_{b}}
-\]
-
-
-\protect\caption{Derivation to get x}
-\end{figure}
-
-
-Assuming that the two spheres intersect at more than 1 point, then 
-
-\[
-x_{a}-d_{a}<d_{b}<d_{a}+x_{a}
-\]
-
-
-\begin{figure}[H]
-\protect\caption{Substituting to get y and z}
-
-
-\end{figure}
-
-
-It is a widely used and one of the most popular method for finding
-a location of an unknown devices. It is one of the main component
-of the Global Positioning System (GPS), which uses the time taken
-for the signal to travel from 4 satellites to our mobile devices,
-to work out the location of the device.
-
-\_\_\_\_\_ 
-
-\todo[inline]{redo section}
-
+Listing \ref{psuedo-code} shows the psuedo code for trilateration. However Trilateration on its own is not a very good technique to identify the location because imperfect data. \citeauthor{trilat-fusion} recommends we use something else with trilateration for positioning system\cite{trilat-fusion}  such as Ecolocation explained in \ref{ecolocation}.
 \subsubsection{Inertial Navigation System (INS)}
 
 INS\cite{innertial_nav_sys} is based on the internal sensors that a devices have
