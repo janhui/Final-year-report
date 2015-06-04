@@ -5,10 +5,17 @@
 \usepackage{mathchars}
 \usepackage{setspace}
 \usepackage{float}
-\usepackage[sorting=none]{biblatex}
 \usepackage{todonotes}
 \usepackage{listings}
 \usepackage{nameref}
+\usepackage{mathtools}
+\usepackage{titlesec}
+\setcounter{secnumdepth}{4}
+%\usepackage[sorting=none]{biblatex}
+\titleformat{\paragraph}
+{\normalfont\normalsize\bfseries}{\theparagraph}{1em}{}
+\titlespacing*{\paragraph}
+{0pt}{3.25ex plus 1ex minus .2ex}{1.5ex plus .2ex}
 
 
 \input{blocked.sty}
@@ -55,6 +62,8 @@
 %\newcommand{\cchi}{{\cal X}}
 %\newcommand{\cchi}{\mbox{\Large $\chi$}}
 
+\newcommand*{\fullref}[1]{\hyperref[{#1}]{\autoref*{#1} \nameref*{#1}}}
+
 % Logical operators and symbols
 \newcommand{\imply}{\Rightarrow}
 \newcommand{\bimply}{\Leftrightarrow}
@@ -99,6 +108,10 @@
 \newcommand{\forr}{\mbox{for}}
 \newcommand{\EE}{\mbox{E}}
 
+\DeclarePairedDelimiter\abs{\lvert}{\rvert}%
+\DeclarePairedDelimiter\norm{\lVert}{\rVert}%
+
+
 \newcommand{\deff}{\stackrel{\mathrm{def}}{=}}
 \newcommand{\syncc}{~\stackrel{\textstyle \rhd\kern-0.57em\lhd}{\scriptstyle L}~}
 
@@ -108,7 +121,7 @@
 
 \newtheorem{definition}{Definition}[chapter]
 \newtheorem{theorem}{Theorem}[chapter]
-
+\raggedbottom
 \newcommand{\Figref}[1]{Figure~\ref{#1}}
 \newcommand{\fig}[3]{
  \begin{figure}[!ht]

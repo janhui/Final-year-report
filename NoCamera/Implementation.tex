@@ -34,7 +34,7 @@ My research about Bluetooth Low Energy (BLE) technology has shown that there are
 \item Accuracy
 \item RSSI signal
 \end{enumerate}
-Most BLE libraries has a method which gives the distance from the beacon to device called Accuracy. Accuracy is a term coined by Apple for their CoreLocation framework to define the distance in meters from the beacon. For Estimote beacons the method is called  \lstinline|computeAccuracy()|. Similar to the Apple function, the calculation done to get this result is hidden by Estimote in their library. However doing more research into some open source libraries \textbf{fix this}\cite{radius-ranging} we can make an educated guess that the distance was calculated by observing RSSI and TxPower values at certain distance intervals and making a line of best fit.
+Most BLE libraries has a method which gives the distance from the beacon to device called Accuracy. Accuracy is a term coined by Apple for their CoreLocation framework to define the distance in meters from the beacon. For Estimote beacons the method is called  \lstinline|computeAccuracy()|. Similar to the Apple function, the calculation done to get this result is hidden by Estimote in their library. However doing more research into some open source libraries \cite{radius-ranging, android_ibeacon_alt} we can make an educated guess that the distance was calculated by observing RSSI and TxPower values at certain distance intervals and making a line of best fit.
 The second option is for me to redo the observation to get the resulting RSSI signal and TxPower for each distances and get a line of best fit to work out the distance. However this would mean that my library would be tailored to the set of beacons I have, instead of being a general library. This would be defeating the point of this project. However in section \textbf{do thhis evaluation} we will see how I had to do both type of distancing.
 
 \subsubsection{Distance App} \label{nocamera_distanceapp}
@@ -47,8 +47,6 @@ It is a list that keeps updating as new BLE readings come in and and update the 
   \label{distance_app_image}
 \end{figure}
 
-
-
 \subsection{Trilateration} \label{nocamera_trilateration}
 
 By creating the Distance app, I was able to familiarise myself with the Estimote library. This aided me in creating the trilateration part of the library. I decided to stick to a Cartesian coordinate system for my design and created a \lstinline|Position| class which kept track of the x and y position of the devices. I also created a \lstinline|FixedBeacon| class which stored the reference beacon and its location.
@@ -56,6 +54,11 @@ By creating the Distance app, I was able to familiarise myself with the Estimote
 Using these new additions I was able to create a method that calculated the position of the receiver on the table. \lstinline|Position calculatePosition(List<FixedBeacon> beaconList)| It requires a list of reference beacons and calculate the distance from those reference beacons. It uses the calculation shown in section \_ to determine the position of the receiver. 
 \todo[inline]{evaluate by coordinate system grid!}
 Figure \_ shows the output of the calculation which I used for my evaluation in section \_
+\begin{figure}[h]
+  \includegraphics[scale=0.2]{images/trilateration}
+  \protect\caption{Trilateration}
+  \label{trilateration}
+\end{figure}
 
 \subsection{Sensors} \label{nocamera_sensors}
 During the implementation and evaluation of the Distance app and Trilateration app, it was clear that something else needs to be combined with BLE for the location system to have chance of being successful. Therefore inspired by the Hybrid sensing method used by HuddleLamp, I decided to add sensor fusion to the positioning algorithm. Having accelerometer to calculate the movement, plus BLE trilateration result together should cancel out some errors given by each other, creating a more accurate positioning system.
@@ -82,9 +85,14 @@ During the first iteration of creating my Where is Wally application, I noticed 
 
 I implemented a Kalman Filter module to my system to reduce the noise in the system. It had a moderate success however in the following evaluation section \_ \_ I would go into detail why this attempt for positioning is not a viable choice for HuddleTable.
 
+\begin{figure}[h]
+  \includegraphics[scale=0.2]{images/setup}
+  \protect\caption{Where is Wally App} 
+  \label{where_is_wally_setup}
+\end{figure}
+
 \subsection{Canvas}
 I also created a canvas app which harnessed the full potential of Firebase for this project. This application is similar to a paint application that a user might have. It is aimed at designers wanting to work at particular part of large canvas enabling collaboration with different people to work on the same canvas. Multiple people collaborating on the same document at the same time is one of the problems I wanted to tackle with this project. It was an aspect that was not advertised too much with HuddleLamp and has a potential to be a useful product. 
-
 By utilising the facilities of Firebase and building on their sample project[link to sample project], I was able to create the Canvas Application.
 
 
