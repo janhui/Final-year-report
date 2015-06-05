@@ -27,7 +27,49 @@ Y X
 0.4	0.835
 0.45 0.88
 0.5	0.895
-}\distance_old_rssi
+}\distanceOldRSSI
+
+\pgfplotstableread{
+y x
+0.05 0.015
+0.1	0.041
+0.15 0.125
+0.2	0.141
+0.25 0.124
+0.3	0.034
+0.35 0.153
+0.4	0.358
+0.45 0.275
+0.5	0.255
+}\distanceOldComputeAccuracy
+\pgfplotstableread{
+y x
+0.05 0.016
+0.1	0.083
+0.15 0.085
+0.2	0.098
+0.25 0.25
+0.3	0.451
+0.35 0.196
+0.4	0.525
+0.45 0.375
+0.5	0.24
+}\distanceNewComputeAccuracy
+
+\pgfplotstableread{
+y x
+0.05 0.6633333333
+0.1	0.7666666667
+0.15 0.78
+0.2	0.7883333333
+0.25 0.8666666667
+0.3	0.8966666667
+0.35 0.8483333333
+0.4	0.91
+0.45 0.9033333333
+0.5	0.0
+}\distanceNewRSSI
+
 \begin{document}
 
 \title{\LARGE {\bf HuddleTable}\\
