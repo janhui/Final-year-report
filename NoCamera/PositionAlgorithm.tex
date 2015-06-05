@@ -187,14 +187,14 @@ Telescope\cite{gyroscope-wiki}.
 \begin{figure}[h]
 \begin{equation} \label{distance_formulae}
 \centering
-a = b+20\times log(\lambda/4 \pi) + 10\timesn\times log(1/d)
+\hat{X}_{k} = K_{k}*Z_{k}+(1-K_{k})*\hat{X}_{k-1} 
 \end{equation}
 \begin{tabular}{@{}>{$}l<{$}l@{}}
-    a & power at the receiver\\
-    b & transmitter power (in dBm)\\
-    \lambda &  wavelength\\
-    n & path loss exponent (n = 2 in free space)\\
-    d & is the distance between the transmitter and receiver
+    \hat{X}_{k} & current estimation \\
+    K_{k} & Kalman gain \\
+    Z_{k} & measure value \\
+    \hat{X}_{k-1} & previous estimation \\
+
   \end{tabular}
 \end{figure}
 
