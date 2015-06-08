@@ -10,31 +10,25 @@ been undertaken to find a simple suitable solution for the problem.
 
 \subsection{Huddle Lamp}
 
-The research into HuddleLamp\cite{huddle-link}, is the work that
-is most similar to mine. HuddleTable is an extension from HuddleLamp.
-HuddleLamp is a project trying to rectify  the fact that interactive
-tables are quite expensive; making it is inaccessible for some everyday
-consumers such as schools, public libraries, community centers etc.
 HuddleLamp aim to use the multitude of unused tablets and smart-phones,
 which people have lying around and create an ad-hoc interactive table
 by using a novel sensing and detection method to deduce where the
-devices are and what they should be shown.
+devices are and what they should be shown. The research into HuddleLamp\cite{huddle-link}, is the work that
+is most similar to mine. HuddleLamp is trying to bring option of having interactive tables to a wider market. Currently very day consumers such as schools, public libraries find it difficult to install a interactive table.
+
 
 HuddleLamp\cite{huddelamp-paper} proposes to use some of the cheaper
-off-the-shelf products like a webcam, and a lamp to create a cheaper
-interactive table that anyone could use. HuddleLamp proposes to use
-a hybrid sensing approach that uses RGB and depth data, that can be
-obtained from sophisticated webcams, which can detect and identify
-mobile displays on tables and track their positions and orientations
-. The project devised a way that multiple devices can interact with
-each other in such a way that they all serve as one seamless multi-device
+off-the-shelf products like a webcam, and a lamp fixture to create a cheaper
+interactive table that anyone could use. HuddleLamp\cite{huddelamp-paper} introduces a hybrid sensing approach that uses RGB and depth data, that can be
+obtained from sophisticated webcams like the Creative senz3d\cite{creative-senz3d}, which can detect and identify
+mobile displays on tables and track their positions and orientations. The project devised a way that multiple devices can interact with
+each other and become one seamless multi-device
 user interface.
 
-Some of the main advantages of HuddleLamp were the face that you seam-less,
-ad-hoc way of adding devices to the user interface (UI). Using HuddleLamp,
-users can add or remove displays and reconfigure them in space without
+Some of the main advantages of HuddleLamp were the fact that you can add a device onto the user interface (UI) in a seam-less, ad-hoc manner. Using HuddleLamp,
+users can add or remove displays and reconfigure them in the space without
 the need of installing any software or attaching markers. Placing
-them below the camera implicitly does the setup and pairing of devices.
+devices below the camera implicitly does the setup and pairing.
 Opening a URL on the device and making it visible to the camera adds
 the new device to the \textquotedblleft Huddle\textquotedblright .
 The camera also tracks the hand movements of the user, enabling interactions
@@ -45,16 +39,16 @@ constrained by having specific devices or requiring them to download
 particular apps. This also means collaboration can occur on tables
 that are cluttered with other objects likes pens and pencils. There
 are 2 main components that are required for HuddleLamp;
-a camera, they suggest Creative Senz3D camera, and a desk lamp, both
+a depth camera, they suggest Creative Senz3D\cite{creative-senz3d} camera, and a desk lamp, both
 are relatively inexpensive components compared to an interactive table.
 
-However there are some deficiencies in this improvisation to make
+However there are some deficiencies in this composition that makes
 an interactive table. At the time of writing, the project has not
 released a public version of their software. The developer
 version requires you to connect a computer with the webcam, which
-does most of the grunt work in term tracking devices. In this architecture
-of HuddleLamp, this does all the resource intensive tasks so if it is
-not a really powerful computer, users could experience lag. The fact
+does most of the work in term tracking devices and gesture rcognition. In this architecture
+of HuddleLamp, the computer does all the resource intensive tasks so if it is
+not a really powerful computer, users could experience a delay. The fact
 that to set this interactive table up you need to connect a lamp up
 to a computer means that the whole setup is not very portable. The
 size of the interactive part of the table is constrained by how high
@@ -65,15 +59,12 @@ Also the suggested camera and its software development kit (SDK) required
 for the project has been taken off the market by its producer. Making
 it imperative that an alternative to HuddleLamp is identified.
 
-
-\subsection{ConnecTable}
-
 \begin{figure}[H]
-\includegraphics[scale=0.5]{connectables}
-
-\protect\caption{ConnecTable Configuration}
+\centering
+\includegraphics[scale=0.4]{huddlelamp_setting}
+\protect\caption{HuddleLamp Setting}
 \end{figure}
-
+\subsection{ConnecTable}
 
 ConnecTable\cite{connectables} was one of the first attempt at creating
 an interactive table. It is a mobile, context aware
@@ -86,7 +77,12 @@ to exchange information by shuffling them over to the other display.
 It predominantly has a pen based interaction, however it also sensors
 integrated onto the tabletop to translate physical actions in the
 real world to interactions on the tables. 
+\begin{figure}[H]
+\centering
+\includegraphics[scale=0.5]{connectables}
 
+\protect\caption{ConnecTable Configuration}
+\end{figure}
 ConnecTable uses the movement in real space and engagement in discussions
 between users as cues on when to connect with other tables. It also
 has multiple use modes where two tables could connect together to
@@ -101,21 +97,12 @@ back to the initiating table. The identification mechanism works in
 range of around 3cm and takes nearly 1.5 seconds to complete.
 
 \begin{figure}[h]
-
+\centering
 \includegraphics[scale=0.5]{connecTable_views}
 \protect\caption{Shows the difference in views between connected and disconnected ConnecTables}
 \end{figure}
 
 \subsection{Beamatron}
-
-\begin{figure}[H]
-\includegraphics[scale=0.3]{Microsoft_Kinect_AR_Beamatron}
-
-\protect\caption{Beamatron}
-
-
-\end{figure}
-
 
 Beamatron \cite{beamatron} is a contribution by the Microsoft research,
 in to the fields of Spatial Augmented Reality. It uses depth cameras
@@ -127,6 +114,11 @@ to allow live changes on the projections. It can reason with room
 coordinates and render 3D objects in precise orientation. Uses 3D
 sound source localization as a means to track user position when the
 user is not in view. 
+\begin{figure}
+\centering
+\includegraphics[scale=0.3]{Microsoft_Kinect_AR_Beamatron}
+\protect\caption{Beamatron}
+\end{figure}
 Beamatron hardware consist of a video projector and a Microsoft Xbox
 Kinect sensor mounted to a City Theatrical Autoyoke\cite{autoyoke}
 moving light platform. To get the information about the pan and tilt
@@ -153,6 +145,7 @@ required.
 \subsection{LightSpace}
 LightSpace
 \begin{figure}[H]
+\centering
 \includegraphics{LightSpace_configuration}
 
 \protect\caption{LightSpace Configuration}
@@ -181,10 +174,11 @@ multi user interaction (MDMU) which creates a larger shared surface.
 Some of the troubles they came across with the devices was the actual
 hardware. Since it required both a mobile device and projector, it
 was a rather expensive tool to carry around with. Adding the projector
-onto the phone meant the device was \uline{CHUNKY}. There was also
+onto the phone meant the device was quite big and inconvenient to carry around. There was also
 trouble with getting some aspects of interactions to work such as
 Multi-modal touch.
 \begin{figure}[H]
+\centering
 \includegraphics[scale=0.25]{surfacePhone}
 
 \protect\caption{SurfacePhone}

@@ -1,10 +1,25 @@
 \chapter{Device Camera}
 
 \label{ch:devcamera}
-\section{Design Choices}
+\section{Introduction}
+
+The biggest obstacle currently faced by HuddleLamp project is the antiquation of the Creative Senz3d camera and the Intel Perpetual SDK. This means that at the time of writing this report, it is difficult to contribute towards the HuddleLamp project. Also the practical application of the product has been hindered substantially. In this section I will look at using an Android device as an alternative to the camera currently used by the HuddleLamp group. I will attempt t
+
+\todo[inline] {finish}
+
+\section{Design Choices} \label{design_choice_android_camera}
+In this section I will outline some of the main choices, I faced with during this implementation of my project. I will attempt to outline a balanced view of the options I had and justify my decisions.
+
+\subsection{Vision Libraries}
+One of the biggest part of the HuddleLamp project is the vision calculations that the computer does. The HuddleLamp project currently uses Opencv as its vision library for different functions such as, calculating the location of the hand of a user and also the locaiton of the mobile devices on the table. In this section I will look at the different vision libraries there are for an Android application.
+
+\subsubsection{OpenCV}
+The OpenCV (Open Source Computer Vision) is a library the was created to accelerate the adoption of computer vision in application. 
+\subsubsection{JavaCV}
+\todo[inline] {not sure about java cv mayb fast cv}
 \subsection{Graphics Manipulation} 
 \subsubsection{Canny edge Detection}
-
+\subsubsection{Contours}
 
 \subsection{Data Storage}
 \subsubsection{Firebase}
