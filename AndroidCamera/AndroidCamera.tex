@@ -70,8 +70,11 @@ FastCV is also only developed for ARM and Qualcomm chipset. Therefore there are 
 \subsection{Device Detection}
 
 \subsubsection{Glyph Decoding}
-Glyph (in typography) is a specific element from a set of elements, intended to be a readable for the purpose of writing[wiki-link]. Glyph decoding is the technique used by the HuddleLamp group to identify the devices on the table and its subsequent location. 
-\subsubsection{Color Detection}
+Glyph (in typography) is a specific symbol from a set of symbols, intended to be a readable for the purpose of writing\cite{glyph-wiki}. Glyph decoding is the technique used by the HuddleLamp group to identify the devices on the table and its subsequent location\cite{huddlelamp-paper}. By making the devices flash unique symbols on the screen and using the camera application to monitor and detect any of those symbols we are able identify the devices. 
+
+There are some disadvantages to this methods. Primarily the decoding of glyphs would be a resource intensive task because finding a specific symbol on a graphics is quite resource intensive. Also the number of devices that could be used for the table is limited to the number of glyphs in the set of symbols you have. As you increase the set, the memory requirement application would all increase creating potential problems. Creating a Glyph decoding application is also quite difficult due to discrepancies in vision detection as shape detection is quite a difficult task\cite{shape_recognition}.
+\subsubsection{Colour Detection}
+Another method of detecting the device is to use Colour Detection. Videos are lots of images changing every few milliseconds[wiki]. Images are illustrated as a two dimensional grid of pixels, where pixels contains values to a colour model such as RGB (Red, Green, Blue). We can use this knowledge to detect specific colours from a camera.
 \subsection{Data Storage}
 \subsubsection{Firebase}
 
