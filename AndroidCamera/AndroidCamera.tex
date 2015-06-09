@@ -1,26 +1,77 @@
 \chapter{Device Camera}
-
+ 
 \label{ch:devcamera}
 \section{Introduction}
-
-The biggest obstacle currently faced by HuddleLamp project is the antiquation of the Creative Senz3d camera and the Intel Perpetual SDK. This means that at the time of writing this report, it is difficult to contribute towards the HuddleLamp project. Also the practical application of the product has been hindered substantially. In this section I will look at using an Android device as an alternative to the camera currently used by the HuddleLamp group. I will attempt t
-
+ 
+The biggest obstacle currently faced by HuddleLamp project is the antiquation of the Creative Senz3d camera and the Intel Perpetual SDK
+% \cite{obsolete_perpetual_sdk}
+. This means that at the time of writing this report, it is difficult to contribute towards the HuddleLamp project. Also the practical application of the product has been hindered substantially. In this section I will look at using an Android device as an alternative to the camera currently used by the HuddleLamp group. I will attempt t
+ 
 \todo[inline] {finish}
-
+ 
 \section{Design Choices} \label{design_choice_android_camera}
 In this section I will outline some of the main choices, I faced with during this implementation of my project. I will attempt to outline a balanced view of the options I had and justify my decisions.
-
+ 
 \subsection{Vision Libraries}
-One of the biggest part of the HuddleLamp project is the vision calculations that the computer does. The HuddleLamp project currently uses Opencv as its vision library for different functions such as, calculating the location of the hand of a user and also the locaiton of the mobile devices on the table. In this section I will look at the different vision libraries there are for an Android application.
-
+One of the biggest part of the HuddleLamp project is the vision calculations that the computer does. The HuddleLamp project currently uses Opencv as its vision library for different functions such as, calculating the location of the hand of a user and also the location of the mobile devices on the table. In this section I will look at the different vision libraries there are for an Android application.
+ 
 \subsubsection{OpenCV}
-The OpenCV (Open Source Computer Vision) is a library the was created to accelerate the adoption of computer vision in application. 
-\subsubsection{JavaCV}
-\todo[inline] {not sure about java cv mayb fast cv}
-\subsection{Graphics Manipulation} 
+The OpenCV (Open Source Computer Vision) is a library that was created to accelerate the adoption of computer vision in application by developers. Some of the mandate for the OpenCV creation was “Advance vision research by providing not only open but also optimised code for basic vision infrastructure. No more reinventing the wheel.”
+\cite{opencv_wiki} 
+OpenCV is developed in C and C++, however the Applications Interface (API) also includes "wrappers" for Java, MATLAB and Python. There are also community supported ports of Android and iOS platforms.
+
+OpenCV4Android is the official name of the Android port of the OpenCV library. 
+\cite{opencv4android_link}. 
+Support from NVIDIA towards the project has accelerated the growth of the library for Android. OpenCV4Android allows creation of vision application using OpenCV in 2  different languages.
+
+\cite{opencv_usage_model}. 
+\begin{figure}[H]
+    \centering
+    \begin{subfigure}[b]{0.47\textwidth}
+        \centering
+        \includegraphics[width=\textwidth]{multiple_jni}
+        \caption{An application with Multiple JNI calls}
+    \end{subfigure}
+    \hfill
+    \begin{subfigure}[b]{0.47\textwidth}
+        \centering
+        \includegraphics[width=\textwidth]{single_jni}
+        \caption{An application with Multiple JNI calls}
+    \end{subfigure}
+    \hfill
+    \caption{A comparison of the 2 usage models\cite{opencv_jni_images}}
+     \label{two_usage_models}
+\end{figure}
+
+The recommended methods of using OpenCV in Android development is to use the Java API provided with the Software Development Kit SDK\cite{opencv_usage_model}. The learning curve to using the Java API is relatively small. It also has the added advantage of running the program natively, giving you faster processing. However the program calls has the overhead of  one or more Java Native Interface (JNI) calls. There is a JNI call when an OpenCV function starts executing and when it finishes executing. Therefore there will be a large overhead during a complex OpenCV project with multiple calls to the function. Another disadvantage of the Java API is the limited support of the OpenCV C/C++ library.
+
+Another slightly more difficult approach is to use the the Android Native Development Kit (NDK). Android allows native function calls through its NDK, therefore we can use the original C++ interface OpenCV for our application. By encapsulating all the functionality in a single C++ class, we woul only need to call it one per frame, improving the performance of the application. This would also give us access to the whole OpenCV library. Since OpenCV is a cross platform library, this enables me to create a program in a host computer to run and test before porting it to the android device. Figure \ref{two_usage_models} shows the difference between the 2 usage models in terms of JNI calls. 
+
+OpenCV is also the library used by the HuddleLamp group. Which would enable me to replicate their work much easier. However since Android devices does not usually have a Depth Sensor on them, Some aspects of the project needs to be adjusted and compensated differently.
+
+\subsubsection{FastCV}
+FastCV is another vision library for mobile devices developed and released by the chip manufacturing giant Qualcomm\cite{fastcv}. It offers developers frequently used computer vision functions that are hardware accelerated. It is a mobile-optimised computer vision (CV) library that used in a wide array of mobile devices.
+
+Figure \ref{opencv_fastcv} shows that FastCV is generally a more optimised library than OpenCV. Almost all the functions are quicker on the FastCV than OpenCV. However FastCV only has a subset of all the functions of OpenCV, which means some functions that might be needed might not be there. It is also a library created and maintained by Qualcomm, subsequently release cycles are less frequent. Open Collaboration of OpenCV means there is more access to underlying architecture and more flexibility in the way to work. 
+
+\begin{figure}[h]
+    \centering
+    \includegraphics[scale=0.5]{fastcv_opencv}
+    \caption{A comparison of the OpenCV vs FastCV \cite{fastcv_opencv}}
+    \label{opencv_fastcv}
+\end{figure}
+
+FastCV is also only developed for ARM and Qualcomm chipset. Therefore there are devices with Intel and Mips architecture that are not supported and would not be able to run the application.
+
+\subsection{Graphics Manipulation}
 \subsubsection{Canny edge Detection}
 \subsubsection{Contours}
 
+\subsection{Device Detection}
+
+\subsubsection{Glyph Decoding}
+Glyph (in typography) is a specific element from a set of elements, intended to be a readable for the purpose of writing[wiki-link]. Glyph decoding is the technique used by the HuddleLamp group to identify the devices on the table and its subsequent location. 
+\subsubsection{Color Detection}
 \subsection{Data Storage}
 \subsubsection{Firebase}
 
@@ -33,13 +84,13 @@ API that which enables data to be synchronised across clients automatically
 and stored on the Firebase cloud. The main advantage is the fact that
 the data gets synchronised within milliseconds. It also supports a
 multitude of platforms such as Android, iOS, JavaScript etc.
-
+ 
 It also only requires client-side code meaning the developers has
 a relative easy job to create the back-end they required with. Storing
 the information as JSON with every information accessible through
 their own URL means the data is easy to store and retrieve and there
-is also a readily available rest endpoint. 
-
+is also a readily available rest endpoint.
+ 
 By providing a simple security management system, Firebase ensures
 that the data moved through the apps are encrypted and safe. By ensuring
 that the security measures are enforced across all parts of the system,
@@ -48,18 +99,18 @@ built with scaling and performance in mind. When the data changes
 Firebase calculates the minimum number of changes required to keep
 all the clients in sync. It also scales linearly depending on the
 amount of data being synchronised, decreasing the likely hood of a
-developer error. 
-
+developer error.
+ 
 The potential of Firebase is enormous. The creators of Firebase hope
 that it can serve the needs of 95\% of web service\cite{firebase-wired},
 meaning it will be an ideal tool in the stack of our system. One of
 its glaring problems is the it is not ideal for processing images,
 however the real-time data synchronisation aspect of it make it a
 really good candidate for the HuddleTable.
-
-
+ 
+ 
 \subsubsection{Meteor}
-
+ 
 Meteor\cite{meteor} is a real-time JavaScript framework to come from
 the Y-Combinator incubator in 2011. It is primarily used by developers
 due to its ability in rapid-prototyping, hence for a MEng project
@@ -70,7 +121,7 @@ to work. It is tightly coupled with the MongoDB, a prominent No-SQL
 database. It has an in built publish\textendash subscribe pattern\cite{pub-sub-pattern}
 which helps to propagate data changes to clients in real-time without
 the need for synchronisation protocols.
-
+ 
 Some of the design principles used by Meteor makes it a really good
 choice for HuddleTable. It has a Data on the wire motivation meaning,
 it only sends the minimum data necessary to re-render the portion
@@ -78,8 +129,8 @@ of the page that has changed decreasing the latency. It has a full
 stack reactivity\cite{meteor-wiki} meaning that everything gets updated
 together when required encouraging its simplicity motivation. Its
 created in such a way that it is easy to learn and implement even
-for beginners. 
-
+for beginners.
+ 
 Meteor is the framework of choice used the by HuddleLamp research.
 They developed an Object storage on top of Meteor so that all manipulations
 on one device become instantly visible on all the other devices. This
@@ -87,10 +138,10 @@ allowed the cross platform collaborative work to be done with ease.
 Having to only work with one language, JavaScript, on the whole project
 means a lot less work for the developer, however the complex algorithm
 required for HuddleTable would not be enticing to do in JavaScript.
-
-
+ 
+ 
 \subsubsection{AirDrop / Android Beam}
-
+ 
 AirDrop\cite{airdrop} is another data sharing service started in
 2011 by Apple. It lets you transfer files, links and other content
 over the Wi-Fi and Bluetooth between Apple devices. It is a technology
@@ -102,7 +153,7 @@ does not require Internet for it to work. It also has built in function
 to control the recipients of the information sent. AirDrop creates
 a peer-to-peer Wi-Fi network between the devices and the files are
 sent encrypted which means the file transfer is also secure.
-
+ 
 Android Beam\cite{android-beam} is a similar technology developed
 by Android for their devices. It allows android devices to share content
 with each other by pressing the devices back to back. Android uses
@@ -110,10 +161,12 @@ the Near field Communication (NFC) hardware to transfer the information
 between the devices. However compared to the Apple's AirDrop, Android
 beam is slower due to it using NFC instead of Wi-Fi. NFC is also not
 available on all Android devices.
-
+ 
 These technologies are restricted because they would only work with
 each other. By creating a protocol similar to this which would work
 across platform would be an ideal scenario. That would mean that the
 devices does not need to be connected to the Internet creating an
 opportunity to make an ad-hoc interactive table anywhere.
+ 
 
+\subsection{Summary}
