@@ -65,13 +65,13 @@ FastCV is also only developed for ARM and Qualcomm chipset. Therefore there are 
 
 \subsection{Graphics Manipulation}
 \subsubsection{Canny edge Detection}
-Edge detection is used to filter out information from the images, but still maintaining the structural information about the image that needs to be processed. Edge detection has many uses and has been used for simple object detection to more sophisticated recognition programs\textbf{[ACRONYM]}. Edge detection is quite a hard problem to solve with two main criterion to meet such as edges in the image should not be missed and no spurious responses, the distance between the detected edge and the actual edge should be small\cite{canny-paper}.
+Edge detection is used to filter out information from the images, but still maintaining the structural information about the image that needs to be processed. Edge detection has many uses and has been used for simple object detection to more sophisticated recognition programs\cite{acronym}. Edge detection is quite a hard problem to solve with two main criterion to meet such as edges in the image should not be missed and no spurious responses, the distance between the detected edge and the actual edge should be small\cite{canny-paper}.
 
 One of the more famous edge detection algorithm is called Canny Edge Detection\cite{canny-paper}, named after the person who came up with the algorithm \citeauthor{canny-paper}. Canny edge detection is still a widely used algorithm and very popular in the Computer Vision community. There are 5 main steps in the canny edge detection algorithm\cite{canny-tutorial}.
 \begin{enumerate}
 \item \textbf{Smoothing}
 
-Most images, taken from a camera, has a lot of noise which could result in spurrious results if it is not filtered out. A Gaussian filter is applied to the image to reduce the amount of noise on the image. A Gaussian filter is created by making a convolution mask, smaller than the actual image. The mask is slid over the image, manipulating a square of pixels at a time\cite{canny-tutorial2}. The sobel-operator
+Most images, taken from a camera, has a lot of noise which could result in spurious results if it is not filtered out. A Gaussian filter is applied to the image to reduce the amount of noise on the image. A Gaussian filter is created by making a convolution mask, smaller than the actual image. The mask is slid over the image, manipulating a square of pixels at a time\cite{canny-tutorial2}. The sobel-operator
 \item \textbf{Finding Gradients}
 
 The algorithm finds the edges by finding the locations in the image where the intensity of the grayscale values changes the most. This is achieved through finding the gradients of the image. By applying a \emph{sobel-operator} we are able to determine the gradient\cite{sobel-operator}. Sobel-operator consist of a 3x3 matrix pair, one estimating the gradient in the x- direction and the other estimating the gradient in the y direction. The magnitude of the edge is determined by using a Euclidean distance over the both gradient. The direction of the edge is also determined so that broader detected edges could be thinned.
