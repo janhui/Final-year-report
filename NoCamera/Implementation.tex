@@ -1,23 +1,6 @@
 \section{Implementation}
 
-In this section I will be talking about my attempt in recreating the HuddleLamp project but without the camera. I will be talking about my trial of using Bluetooth Low Energy technology and Sensors to recreate the positioning algorithm and object tracking features of the HuddleLamp. Similar to my \nameref{} section I will be using Firebase as my underlying real time storage system.
-\todo[inline]{Implementation.tex: talk about firebase mayb?}
-
-
-\subsection{Introduction?? not sure about the name!!!}
-HuddleLamp was a project that introduced some novel ideas such as the Hybrid sensing approach in tracking devices. It successfully initiated a discussion into spatially aware mobile devices. By utilising various technologies and devices they were able to bring the idea into fruition. 
-
-However there are some drawbacks to the product, such as needing to carry around a laptop, a stand and a camera for the algorithm to work. The space that we could use, the canvas of the application, was limited by the area that was visible to the camera. This area is proportional to the height of the camera from the table. Another drawback noticed by \citeauthor{huddelamp-paper} was the noticeable delay between the physical movement of a screen and the corresponding reaction of the UI\cite{huddelamp-paper}. 
-
-I am going to try and address some of these drawbacks by using a combination of BLE and Sensor fusion instead of a camera for my tracking and positioning system. I would be creating an Android application which means the computer would be unnecessary. It should also provide a better reaction time. 
-
-I hope to make this into a library such that it would be easier to create applications to be used on the interactive table. Currently there is no clear documentation on how to create an application for HuddleLamp. By creating a library to work out the current location for the application and the scrolling on a screen, the majority of the complexity could be converted into a "black box" that the developers would not have to worry about. I plan to have a library that could cater to the needs of most developers. 
-
-\begin{figure}[h]
-  \includegraphics[scale=0.7]{images/googleform}
-  \protect\caption{Form to find out preferred interactions} 
-  \label{googleform}
-\end{figure}
+In this section I will be talking about my attempt in recreating the HuddleLamp project but without the camera. 
 
 
 \subsection{Architecture} \label{nocamer_architecture}
@@ -47,7 +30,7 @@ It is a list that keeps updating as new BLE readings come in and and update the 
   \label{distance_app_image}
 \end{figure}
 
-\subsection{Trilateration} \label{nocamera_trilateration}
+\subsubsection{Trilateration} \label{nocamera_trilateration}
 
 By creating the Distance app, I was able to familiarise myself with the Estimote library. This aided me in creating the trilateration part of the library. I decided to stick to a Cartesian coordinate system for my design and created a \lstinline|Position| class which kept track of the x and y position of the devices. I also created a \lstinline|FixedBeacon| class which stored the reference beacon and its location.
 
@@ -60,7 +43,7 @@ Figure \_ shows the output of the calculation which I used for my evaluation in 
   \label{trilateration}
 \end{figure}
 
-\subsection{Sensors} \label{nocamera_sensors}
+\subsubsection{Sensors} \label{nocamera_sensors}
 During the implementation and evaluation of the Distance app and Trilateration app, it was clear that something else needs to be combined with BLE for the location system to have chance of being successful. Therefore inspired by the Hybrid sensing method used by HuddleLamp, I decided to add sensor fusion to the positioning algorithm. Having accelerometer to calculate the movement, plus BLE trilateration result together should cancel out some errors given by each other, creating a more accurate positioning system.
 
 After conducting some research into available sensors, the most useful sensor available was the accelerometer. Even though most devices have a gyroscope, the use cases of my library did not require the device to be tilted in any way hence gyroscope was not necessary. 

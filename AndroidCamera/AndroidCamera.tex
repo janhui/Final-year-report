@@ -1,13 +1,4 @@
-\chapter{Device Camera}
- 
-\label{ch:devcamera}
-\section{Introduction}
- 
-The biggest obstacle currently faced by HuddleLamp project is the antiquation of the Creative Senz3d camera and the Intel Perpetual SDK
-% \cite{obsolete_perpetual_sdk}
-. This means that at the time of writing this report, it is difficult to contribute towards the HuddleLamp project. Also the practical application of the product has been hindered substantially. In this section I will look at using an Android device as an alternative to the camera currently used by the HuddleLamp group. I will attempt t
- 
-\todo[inline] {finish}
+
  
 \section{Design Choices} \label{design_choice_android_camera}
 In this section I will outline some of the main choices, I faced with during this implementation of my project. I will attempt to outline a balanced view of the options I had and justify my decisions.
@@ -63,6 +54,17 @@ Figure \ref{opencv_fastcv} shows that FastCV is generally a more optimised libra
 
 FastCV is also only developed for ARM and Qualcomm chipset. Therefore there are devices with Intel and Mips architecture that are not supported and would not be able to run the application.
 
+\subsection{Device Detection}
+
+\subsubsection{Glyph Decoding}
+Glyph (in typography) is a specific symbol from a set of symbols, intended to be a readable for the purpose of writing\cite{glyph-wiki}. Glyph decoding is the technique used by the HuddleLamp group to identify the devices on the table and its subsequent location\cite{huddlelamp-paper}. By making the devices flash unique symbols on the screen and using the camera application to monitor and detect any of those symbols we are able identify the devices. 
+
+There are some disadvantages to this methods. Primarily the decoding of glyphs would be a resource intensive task because finding a specific symbol on a graphics is quite resource intensive. Also the number of devices that could be used for the table is limited to the number of glyphs in the set of symbols you have. As you increase the set, the memory requirement application would all increase creating potential problems. Creating a Glyph decoding application is also quite difficult due to discrepancies in vision detection as shape detection is quite a difficult task\cite{shape_recognition}.
+\subsubsection{Colour Detection}
+Another method of detecting the device is to use Colour Detection. Videos are lots of images changing every few milliseconds[wiki]. Images are illustrated as a two dimensional grid of pixels, where pixels contains values to a colour model such as RGB (Red, Green, Blue). We can use this knowledge to detect specific colours from a camera.
+By analysing the frames of the video using OpenCV, and making the devices on the table show different unique colours or have coloured marking, we can identify the location of those devices on the table. By looking for large areas of same colour on the images we can identify the devices on the table.
+
+
 \subsection{Graphics Manipulation}
 \subsubsection{Canny edge Detection}
 Edge detection is used to filter out information from the images, but still maintaining the structural information about the image that needs to be processed. Edge detection has many uses and has been used for simple object detection to more sophisticated recognition programs\cite{acronym}. Edge detection is quite a hard problem to solve with two main criterion to meet such as edges in the image should not be missed and no spurious responses, the distance between the detected edge and the actual edge should be small\cite{canny-paper}.
@@ -88,18 +90,13 @@ All the strong edges marked from the previous step and automatically added as an
 
 I can use edge detection to determine the location of the devices either through the glyph decoding or through the colour detection method because almost all devices have a black "edge" around the screen of the tablet. By flashing contrasting colours on the screen there would be a definite edge between the screen and the edge which could be detected easily.
 \subsubsection{Contours}
+Contours are quite similar to edge detection. They are curves that join continuous points along the boundary that has the same colour or intensity\cite{contour-opencv}. The main difference being that the boundaries are joined together to create a line that separate the different colour or intensity unlike edge detection where the points does not have to be joined. Contours are a very useful tool for object detection and recognition as well as shape analysis.
+
+Some of the main features of contours that is available for us through OpenCV is the option to get the area, perimeter etc of the contours\cite{contour-features}. Allowing us to use this information for the object recognition part of out algorithm. Combining contours with gray scaling and colour detection we can easily find objects in the images.
 
 
 
-\subsection{Device Detection}
 
-\subsubsection{Glyph Decoding}
-Glyph (in typography) is a specific symbol from a set of symbols, intended to be a readable for the purpose of writing\cite{glyph-wiki}. Glyph decoding is the technique used by the HuddleLamp group to identify the devices on the table and its subsequent location\cite{huddlelamp-paper}. By making the devices flash unique symbols on the screen and using the camera application to monitor and detect any of those symbols we are able identify the devices. 
-
-There are some disadvantages to this methods. Primarily the decoding of glyphs would be a resource intensive task because finding a specific symbol on a graphics is quite resource intensive. Also the number of devices that could be used for the table is limited to the number of glyphs in the set of symbols you have. As you increase the set, the memory requirement application would all increase creating potential problems. Creating a Glyph decoding application is also quite difficult due to discrepancies in vision detection as shape detection is quite a difficult task\cite{shape_recognition}.
-\subsubsection{Colour Detection}
-Another method of detecting the device is to use Colour Detection. Videos are lots of images changing every few milliseconds[wiki]. Images are illustrated as a two dimensional grid of pixels, where pixels contains values to a colour model such as RGB (Red, Green, Blue). We can use this knowledge to detect specific colours from a camera.
-By analysing the frames of the video using opencv, and making the devices on the table show different unique colours or have coloured marking, we can identify the location of those devices on the table. By looking for large areas of same colour on the images we can identify the devices on the table.
 \subsection{Data Storage}
 \subsubsection{Firebase}
 

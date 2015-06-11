@@ -1,5 +1,13 @@
 \section{Implementation}
+\subsection{Architecture}
 
+Figure _ shows the arrangement of the devices on the table. It shows a device on a stand with its back camera facing down onto the table which does all the vision calculation. There are a multiple of devices on the table which comes together to become a ad-hoc ubiquitous surface.
+
+Figure _ shows the architecture diagram of how the system works. The device on the stand does the vision calculation to locate all the devices and saves the coordinate of the device to the Firebase. As soon as the position gets updated the devices gets a notification which it checks to find its location on the table and show the part of the table at that location.
+
+\subsection{Database Design}
+
+Firebase saves the information in a JSON format on its database as a (key, value) pair.
 \begin{enumerate}
 \item problem 
 \item how I am going to solve it.

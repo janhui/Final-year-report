@@ -9,10 +9,7 @@
 
 \include{thesis.preamble}
 %needs to be last package imported!
-\usepackage{hyperref}
-\usepackage[backend=bibtex,sorting=none]{biblatex}
-\bibliography{bibliography/final-report.bib}
-\bibliographystyle{abbrv}
+
 
 \graphicspath{ {images/} }
 \pgfplotstableread{
@@ -92,6 +89,7 @@ y x
 \input{background/background}
 
 % Android Camera Implementation
+\input{AndroidCamera/Introduction}
 \input{AndroidCamera/AndroidCamera}
 \input{AndroidCamera/language}
 \input{AndroidCamera/summary}
@@ -100,6 +98,7 @@ y x
 
 
 % Bluetooth Implementation
+\input{NoCamera/Introduction}
 \input{NoCamera/NoCamera}
 \input{NoCamera/PositionAlgorithm}
 \input{NoCamera/BeaconVendors}

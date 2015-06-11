@@ -102,7 +102,7 @@ range of around 3cm and takes nearly 1.5 seconds to complete.
 \protect\caption{Shows the difference in views between connected and disconnected ConnecTables}
 \end{figure}
 
-\subsection{Beamatron}
+\subsection{Beamatron} \label{beamatron}
 
 Beamatron \cite{beamatron} is a contribution by the Microsoft research,
 in to the fields of Spatial Augmented Reality. It uses depth cameras
@@ -143,17 +143,22 @@ required.
 
 
 \subsection{LightSpace}
-LightSpace
 \begin{figure}[H]
 \centering
 \includegraphics{LightSpace_configuration}
-
 \protect\caption{LightSpace Configuration}
+\label{lightspace-config}
 \end{figure}
 
+LightSpace is another research contribution by Microsoft in the "smart-room" field of research\cite{lightspace}. LightSpace is an office-sized room instrumented with projectors and depth cameras. These instruments combine together to help the user to touch and manipulate virtual objects that are in the room, on un-instrumented surfaces. The depth camera aids to determine the location of users hand by doing real-time 3d surface geometry. Some of the main motivation for the LightSpace project was to have: 
+\emph{Surface Everywhere} where all physical surface should be interactive displays, 
+\emph{The room is the computer} even the space between the physical surface should be interactive and 
+\emph{Body as display} graphics may be projected in onto the user's body to enable interactions such as holding and carrying the object.
+Their primary target was to enable interactivity and visual- izations throughout our everyday environment, without augmenting users and other objects in the room with sensors or markers\cite{lightspace}.
 
-\todo[inline]{background: finish lighstpace}
+The LightSpace implementation is  a 10ft (W) x 8ft (D) x 9ft (H) interactive space in which we suspended 3 projectors and 3 depth cameras together from the ceiling (Figure \ref{lightspace-config})\cite{lightspace}.
 
+This project is quite similar to the Section \nameref{beamatron} project however LightSpace has a bigger field of vision due to its multiple projectors and depth cameras. LightSpace has made major breakthroughs in terms of converting 3D space into interactive space and also in terms of adding multiple interactions to a room. However this project is more useful for someone creating a smart room. Information about using vision manipulation could help for HuddleTable, however this an implementation that is fixed to an area and cannot be moved, which goes against my idea of having a very portable product that could be set up anywhere. 
 
 \subsection{SufacePhone}
 
