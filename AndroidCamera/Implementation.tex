@@ -22,15 +22,78 @@ The \emph{numOFDevices} is the number of Devices that are in this session on the
 
 
 \subsection{Applications}
+For this concept to come to life I had to make two different application. One has to be a replacement for the camera and the laptop in the HuddleLamp project, called the \emph{CameraApp} and the other has to be an application for all the devices on the table, called the \emph{TableApp}. This application should be able to deal with gesture control and interaction since we do not have depth sensors in this arrangement.
 
-\subsubsection{Table App} \label{tableapp}
-talk about background color
-\subsubsection{Camera App} \label{cameraapp}
-talk about session name
-\begin{enumerate}
-\item problem 
-\item how I am going to solve it.
-\item What I did
-\item evaluation
-\end{enumerate}
-    
+As ayou can see from my database design,the whole idea hinges on the "session name", therefore both application start off on a similar screen where the users can type in the session name. Figure \ref{session_screen} shows the session screen. 
+\subsubsection{CameraApp} \label{cameraapp}
+CameraApp was the main contribution in this Chapter. the primary aim of the CameraApp was to detect and identify devices on the table. My research in Section \ref{device_identification} shown that the most efficient method for identification in this scenario would be colour detection. To simplify the problem and to reduce the chance of overlapping I have decided to limit the colours to just the primary colours. This would mean there would be a clear distinction between the colours making it easier for the device to identify the position.
+\begin{figure}[H]
+    \centering
+    \begin{subfigure}[b]{0.47\textwidth}
+        \centering
+        \includegraphics[width=\textwidth]{red(rgb)}
+        \caption{A screen with Red area showing}
+        \label{red_screen}
+    \end{subfigure}
+    \hfill
+    \begin{subfigure}[b]{0.47\textwidth}
+        \centering
+        \includegraphics[width=\textwidth]{red(filtered)}
+        \caption{Same frame filtered for Red}
+    \end{subfigure}
+    \hfill
+    \caption{Screenshot of the application working for Red area}
+     \label{filtered_red}
+\end{figure}
+As a proof of concept, and as an initial milestone I decided to try and get the CameraApp to detect large red surfaces. I had to work out the range for red colour in Hue, Saturation, Value (H, S, V) format and then filter the image for that range. Table \ref{colour_range} shows the various ranges for different colours. Figure \ref{filtered_red} shows the result of the application working for red colour.
+
+\begin{table}[h]
+\centering
+\begin{tabular}{|c|c|}
+\hline 
+Colour & (H, S, V) Ranges\tabularnewline
+\hline 
+\hline 
+Red & \begin{tabular}{@{}c@{}}(0, 100, 100) to (10, 255, 255) \\ \& \\ (160, 100, 100) to (179, 255, 255) \end{tabular} \tabularnewline
+\hline 
+Green & (40, 100, 100) to (75, 255, 255)\tabularnewline
+\hline 
+Blue & (100, 0, 0) to (120, 255, 255)\tabularnewline
+\hline 
+\end{tabular}
+\caption{A table to show the Hue, Saturation and Value ranges used for the colours Red, Green and Blue}
+\label{colour_range}
+\end{table}
+
+The next logical step was to get the position of those red object and store it in our data store in Firebase. This was made easier by using same key values for both application for common keys such as, position, colour name etc. By using the same Enum for the both apps for colour I was able to ensure that the colour name saved onto Firebase would be identical and Figure {} shows the final strings used as the key for other values such as position, number of Devices.
+
+I used the view of the camera app for my coordinate system. By getting the position of the red object on the screen and translated it using the function \emph{convertToPosition()} that I wrote to work out the position. I saved it as a position object onto the data store.
+
+The next step in the evolution of the app was to filter for other colours that the camera could see and save those position onto the data store. Figure () shows the scenario where the CameraApp was able to detect a red and green object in the image and show their respective positions. This milestone was achieved by making copies of each frame and then filtering the frames for different colour ranges. So in our case we had to make 4 copies (2 X red, blue and green) and filter them and then merge them using a weighted sum of all the arrays. OpenCV had a function called \emph{Core.addWeighted()} which was able to do this for me.
+\begin{figure}[H]
+    \centering
+    \begin{subfigure}[b]{0.47\textwidth}
+        \centering
+        \includegraphics[width=\textwidth]{multiple(rgb)}
+        \caption{A screen with Multiple colour area showing}
+    \end{subfigure}
+    \hfill
+    \begin{subfigure}[b]{0.47\textwidth}
+        \centering
+        \includegraphics[width=\textwidth]{multiple(filtered)}
+        \caption{Same frame filtered for Multiple colours}
+    \end{subfigure}
+    \hfill
+    \caption{Screenshot of the application working for Multiple colour area}
+     \label{filtered_red}
+\end{figure}
+
+
+
+\subsubsection{TableApp} \label{tableapp}
+
+The second half of the application is the TableApp. This is the app that should show the content that should be shown by the interactive table and also handle the interactions. It should also help to keep track of number of devices on the table.
+
+Whenever this application starts a new session, by hitting the \emph{submit} of the session screen, it queries the data store for number of devices in the session and then increments that number and store the number. This number is also used to determine the colour identification of this device. The colour is picked to be one of the primary colour.
+
+
