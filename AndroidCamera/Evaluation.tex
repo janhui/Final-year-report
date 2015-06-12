@@ -1,15 +1,60 @@
 \section{Evaluation}
 \subsection{Strengths and Weakness}
-Strength
+
+One of the biggest success of this application was the successful porting of the project to Android device. This meant that there is a possibility of taking the HuddleLamp project forward. One of the key target was to identify potential pivots from the HuddleLamp project such that there are potential for the future. Even though the CameraApp has limited functionality and does not have all the features that the HuddleLamp project has, however it does prove that an android device could be a substitute for the camera and the computer.
+
+It also proves that any device could be added as long as the TableApp application exist for that platform. TableApp application is a lightweight application that does not have too much complex algorithm, therefore it would be relatively easy to replicate and recreate the application in different platforms. 
+
+The CameraApp application is a substantially more complicated application with various different features that needs to be recreated for different platforms. However one improvement that will reduce the time to port the application to different platforms and also reduce the risk of making errors in the process, by creating a C++ class which does the main OpenCV functions. As mentioned in Section \ref{opencv_section} OpenCV can be integrated into mobile applications by 2 ways. Either by calling the function in the Java SDK or by creating a C++ class that does all the calculation and then calling that C++ class using JNI.
+
+By creating this class it would decrease the number of JNI calls as well as making sure there are more re-usable code, always a sign of good design. It would also decrease the amount of work a developer has to do, to create the camera app. It would also increase the exposure of the product as more platforms will be supported which in turn means that it is accessible for more users.
+
+Getting the application to successful integrate OpenCV and detect the device was a good success, however there are some drawbacks in the project which makes it not ideal. 
+
+One of the main drawbacks of the project is the lack of resources on the device. I used a nexus 7 as my device for the CameraApp, which is a relatively powerful device out of all the options of android devices. It ranked as the 5\textsuperscript{th} best android tablet in the world\cite{techradar-android-tablets}. Using it I was only able to get a refreshing rate of \textless 1 Frames per second (fps). However after I took advantage of the multiple core in the device I was able to improve the refreshing rate to be (). Table \ref{refresh_rate_table} shows the improvement in the refresh rate after the optimisation. I could also have tried it on a Samsung Tab S which has a much better resources which would definitely improve the refresh rate. Table \ref{spec_comparison} shows the difference in resource between the Nexus 7 and Samsung Tab S
+\begin{table}[h]
+    \centering
+    \begin{tabular}{|c|c|c|}
+        \hline 
+        Resource & Nexus 7 & Samsung Tab S\tabularnewline
+        \hline 
+        \hline 
+        CPU & Quad-core 1.5 GHz Krait & \begin{tabular}{@{}c@{}}2.3 GHz quad-core Krait 400 SoC processor \\ or \\  1.9Ghz A15         Quad + 1.3Ghz A7 Quad octa-core \end{tabular}
+        \tabularnewline
+        \hline 
+        Memory & 2 GB RAM &  3 GB RAM\tabularnewline
+        \hline 
+        Primary Camera & 5 MP, 2592 х 1944 pixels, & 8 MP, 3264 x 2448 pixels \tabularnewline
+        \hline 
+    \end{tabular}
+    \caption{A table to show the main difference in specification between Nexus 7 and Samsung Tab S \cite{nexus_spec,     galaxy_tab_s_spec}}
+    \label{spec_comparison}
+\end{table}
+
+Another improvement I could have made was to create a C++ class that encapsulate all of the OpenCV processes that I would use. This would decrease the number of JNI calls I would have had to make. Currently I was using around () JNI calls in single thread, () in multi-thread. I would have been able to decrease that to just 2 if I made the C++ class. It would be something I would have liked to try out to evaluate how much improvement it would have made to my refresh rate. However that will be one of the future work I would like to do.
+
+\begin{table}[h]
+\centering
+\begin{tabular}{|c|c|}
+\hline 
+Before Optimisation (fps) & After Optimisation (fps)\tabularnewline
+\hline 
+\hline 
+ \textless 1 & todo 
+\tabularnewline
+\hline 
+\end{tabular}
+\caption{A table to show the difference in refresh rate after optimisation}
+\label{refresh_rate_table}
+\end{table}
+\todo[inline]{todo the refresh rate values after threading}
+As a consequence of the low refresh rate I had to scale back my implementation so that the devices had to be static. I realised keeping track of mobile devices using functions allowed by OpenCV like optical flow would have taken up too much resources and slowed it down even further. However it is something else I would like to try using a device with a better specification.
+
+One of the other potential problem was that the colour detection could be a problem if the CameraApp lose track of position. If the device was not built as static and was able to move then the CameraApp could potential lose track of it, for which I have not implemented a solution for. One of the potential solution would be to wrap the outer edge with specific colour of the device so that the CameraApp could always keep track of it.
+
+Another problem in the implementation that I have not dealt with is the lack of security or moderation for the application. In the current implementation there is a possibility of someone joining into the session from somewhere else. For example someone could make a mistake in their session name and could accidentally join a session that could be happening at a different location which could lead to dire consequences. I have not implemented any user level security features where someone (administrator) could add or delete users to a session. A good side-effect is they do not all have to be at one location to use the application, they do however have to have both TableApp and CameraApp. 
+
+
 \begin{itemize}
-\item works
-\item any device can do it.
-\end{itemize}
-Weakness
-\begin{itemize}
-\item fps
-\item colour support
-\item optical flow?
-\item number of jni calls
 \item qualitative
 \end{itemize}
