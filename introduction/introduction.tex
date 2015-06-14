@@ -4,28 +4,45 @@
 \section{Motivation}
 Being a 90s kid we were exposed to an impressive array of gadgets through various blockbuster movies and television (TV) shows such as Star Wars and Star Trek. One of the unfortunate consequences of growing up is learning that majority of these gadgets are are just superficial and there are no product that actually meets the feats showed in the movies. It burst our bubble makes us wish there was something that would be as good. 
 
-Some of these have come to fruition over the years like the Smart watches, tablets etc. There are some that are still under development like the Google Glass, self driving cars. Then came the recent movies like Iron Man with more remarkable gadgets like the Iron Man suit and the J.A.R.V.I.S system. 
+Some of these have come to fruition over the years like the Smart watches, tablets etc. There are some that are still under development like the Google Glass, self driving cars. Then came the recent movies like Iron Man with more remarkable gadgets like the Iron Man suit and the J.A.R.V.I.S system. A lot of these newer has materialised as well, or a lot of research is being conducted in their different facets like natural language processing[recent research], Artificial intelligence().
+\todo[inline]{find recent research}
 
-90s kids star trek star wars \\
-Later came marvel and ironman\\
-Burst tje bubble\\
-All has multiple facets nlp, ai, hologram\\
-Decided to focus on one\\
-Interactive table\\
-Introduce interactive table\\
-Huddlelamp\\
-Sdk nd no more camera\\
-At a cross road\\
+One of the device that has excited us and was common to most of these movies was the interactive table-esque display all of them had. Interactive tabletop, one of the synonym of interactive table, is defined as a \emph{“a large surface that affords direct, multi-touch, multi-user interaction"}\cite{interactive-table-def}. A lot of research has been undertaken in the interactive tabletop and interactive surface by various research groups backed by different entities. 
+
+These research has culminated in some products being released to the market like the Samsung SUR40 using the Microsoft PixelSense software\cite{samsung-sur40} and FlatFrog\cite{flatfrog}. However One of the biggest drawbacks for these products is the lack of acceptance in the wider consumer market. This is primarily due to the exorbitant prices of these devices. For instance the Samsung SUR40 cost around £6000+ pound\cite{samsung-sur40-price}. There is a large scope potential for interactive tables in public collaborative locations like schools, public libraries. However due to the pricing it is not an accessible amenity for most of these entities??.
+
+One of the project that has tried to address this issue is the HuddleLamp project\cite{huddlelamp-paper}. They propose to bring together more recent inventions like tablets and smart-phones, and combining with off-the shelf webcams that has time of flight features, to create an ad-hoc interactive table. There will be a more in depth analysis of the HuddleLamp project in Section \ref{Sec:huddlelamp}.
+
+There have been recent revelation about some of the technologies that has impeded the research into HuddleLamp. The Software Development Kit (SDK) used by HuddleLamp was made obsolete by Intel as they created a completely new SDK which had most of the same features. Creative also ceased producing the webcam, Creative Senz3D, used by HuddleLamp. This meant that the HuddleLamp project was at a crossroad where alternatives to the webcam and the SDK had to be found or the current software had to be ported so that the new SDK, Intel RealSense\cite{intel-realsense}, could be used.
+\todo[inline]{new sdk}
 
 
 
 
 \section{Objectives}
 
-Contributions here.
+\begin{itemize}
+\item Alternative to the webcam
+\item get rid of computer
+\item more simple architecture
+\item a library for future use
+\end{itemize}
 
+\section{Contribution}
+
+\begin{itemize}
+\item Android porting
+\item attempted bluetooth
+\item User a more commercial datastore and created a library with API
+\end{itemize}
 
 \section{Report Structure}
 
-Statement here.
+The remainder of this report is separated into four chapters:
+\begin{itemize}
+\item Background Research (page \pageref{ch:background})
+\item Device Camera (page \pageref{ch:devcamera})
+\item No Camera (page \pageref{ch:no_camera})
+\item Conclusion (page \pageref{ch:conclusions})
+\end{itemize}
 
