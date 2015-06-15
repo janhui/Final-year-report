@@ -1,34 +1,34 @@
 
 
 \section{Design Choices}
-Similar to \ref{design_choice_android_camera}, I will outline some of the main choices, I faced with during this implementation of my project. I will attempt to outline a balanced view of the options I had and justify my decisions.
+In a similar manner to \ref{design_choice_android_camera}, We will see some of the main design choices, encountered during the implementation phase of my project. We will attempt to outline a balanced view of the options available and justify the decisions taken.
 \subsection{Radio Frequency Signal}
 
 \subsubsection{Wi-Fi}
 
-Wi-Fi is one of the most used Radio Frequency (RF) signals out there.
+Wi-Fi is one of the most used Radio Frequency (RF) signals.
 It is used for computer networking using 2.4 GHz UHF and 5 GHz SHF
 ISM radio bands\cite{wifi-wikipedia}. The services provided using Wi-Fi are also
 numerous, from consulting web pages to watching on demand video sequences. 
 
 One of the biggest advantages of Wi-Fi is the fact that it is
-widely used. Almost all location has Wi-Fi now, which means the setup
-cost and maintenance cost of Wi-Fi would be cheap. It also has the
+widely used. Almost all locations have Wi-Fi now, which means the setup and maintenance cost of Wi-Fi would be cheap. It also has the
 ability to transfer complicated data between its Access point (AP)
-and the mobile devices, making it highly adaptable. 
+and mobile devices, making it highly adaptable. 
 
 Wi-Fi has been used for indoor positioning before by various research
-groups\cite{wifi-indoor}. Two positioning techniques have been particularly popular for this research
-called Signal Strength Cartography and Wave propagation. 
+groups\cite{wifi-indoor}. Two positioning techniques have been particularly popular for this research, Signal Strength Cartography and Wave propagation. 
 
+\paragraph{Signal Strength Cartography}
 Signal Strength Cartography\cite{sig-cart} is a reference-based technique where you map the area
 with coordinates and the strength of the Wi-Fi signal, during an offline phase. Therefore when you
 are trying to locate the coordinates of the device, we can refer to the signal strength and choose the most probable one. There are two main steps
 for this technique, an offline "mapping" step, which could be done either
 by simulation or manually using measurements, and an "online" positioning
-step, which could be done either using a probabilistic method or deterministic
+step, which could be done either using a probabilistic or deterministic
 method. 
 
+\paragraph{Wave propagation}
 Wave propagation approach is a mathematical attempt at finding the
 distance between the device and the transmitter by finding a relation
 between the distance and the signal strength. By using at least three
@@ -36,7 +36,7 @@ AP we can use wave propagation and trilateration explained in \fullref{trilatera
 of the device. 
 
 However there are various disadvantages of using Wi-Fi to work out
-positioning of the devices. There are usually only one AP per location,
+the position of the devices. There is usually only one AP per location,
 however we would require more than one, to get more accurate positioning
 of the devices. Wi-Fi works mainly by sending signals in channels,
 so having more than one Wi-Fi AP in a location could produce congestion
@@ -46,8 +46,8 @@ sends out its signal about 20m\cite{wifi-wikipedia}.
 
 There is hope for using Wi-Fi as the main Radio frequency for our
 product in the future after the Wi-Fi Standards agency brings out
-Wi-Fi -aware. Which is proximity based discovery system. Introduction
-of this system could mean that there is no need for extra  AP, and the devices could interact with each other without any
+Wi-Fi -aware, which is a proximity based discovery system. Introduction
+of this system could mean that there is no need for extra  APs, and the devices could interact with each other without any
 outside help. 
 
 
@@ -55,9 +55,7 @@ outside help.
 
 GPS is one of the most widely used features in our devices. Currently almost every application that
 we use on our mobile devices request for GPS access which is a good indication of
-how prominant GPS is used in out lives. GPS is a space based navigation system
-using the satellites. The Department of Defence of USA, using the
-24 satellites they had already in orbit, introduced it\cite{gps_basics}. 
+how prominant GPS is. It is a space based navigation system built, by The Department of Defence of USA, using the 24 satellites they had already in orbit\cite{gps_basics}. 
 
 GPS satellites transmit data continuously, which contains their current
 time and position. A GPS receiver listens to multiple satellites and
@@ -67,13 +65,13 @@ in view of the receiver in order to compute four unknown quantities
 (three position coordinates and clock deviation from satellite time). 
 
 The main advantage of GPS is that it is widely available.
-Almost all device has a GPS receiver on it. It also has a very large
+Almost all devices have a GPS receiver. It also has a very large
 range. However it is not a viable option for us because of the fact
 that the signal comes from outer space and our devices are usually
 indoors. GPS like any radio frequency signal is prone to absorption
 and diffraction by the roof and walls in the building. GPS also has
-high power consumption. GPS tends to be not very accurate, averaging
-approximately 3.5 meter horizontal accuracy\cite{gps-accuracy} which would make it not feasible for our use. 
+high power consumption. Lastly, GPS tends to be not very accurate, averaging
+approximately 3.5 meter horizontal accuracy\cite{gps-accuracy} which would make it unfeasible for our use. 
 
 
 \subsubsection{Bluetooth}
@@ -89,7 +87,7 @@ a multitude of applications has used Bluetooth in various different
 ways from transferring files to streaming songs.
 
 SIG is in charge of the specification of Bluetooth and creating a
-road map for it going forward. To standardise the form of communication
+road map for the technology going forward. To standardise the form of communication
 through Bluetooth, SIG has defined a set of profiles that needs to
 be made available by the manufacturer. Devices usually only have a
 subset of these profiles enabled\cite{bluetooth-profiles}. Some of these profiles are: 
@@ -100,12 +98,14 @@ subset of these profiles enabled\cite{bluetooth-profiles}. Some of these profile
 like keyboards, mice and game controllers.
 \end{itemize}
 Bluetooth is aimed at applications that require short-range communication
-typically few meters. The actual range an application make depends
-on the Bluetooth Class the application has and also external circumstances
+typically within a few meters. The actual range an application make depends
+on the application's bluetooth class and also external circumstances
 like absorption, diffraction etc. Bluetooth devices are separated
-out into 3 different classes with separate transmission power\cite{bluetooth-chalmers}. The
+out into 3 different classes with separate power transmissions\cite{bluetooth-chalmers}. The
 full picture is shown in Table 1.
 
+\begin{table}[H]
+\centering
 \begin{tabular}{|c|c|c|c|}
 \hline 
 Class & Max Power Output & Max Range & Power Level Control\tabularnewline
@@ -118,15 +118,15 @@ Class & Max Power Output & Max Range & Power Level Control\tabularnewline
 3 & 1 mW & 1 m & Optional\tabularnewline
 \hline 
 \end{tabular}
-\begin{table}[H]
+
 \protect\caption{Bluetooth Power class}
 \end{table}
 
 
 Due to the different profiles and more than sufficient range and relatively
 low power consumption, Bluetooth shows considerable potential to be
-used as our Radio frequency signal for our positioning. However there are
-some aspects of it, which makes it difficult for Bluetooth to be used.
+used as our Radio frequency signal to achieve positioning. However there are
+some aspects, which makes it difficult for Bluetooth to be used.
 The main problem is the security constraints of Bluetooth, which requires
 the devices to go through a pairing process with each other. 
 
@@ -155,8 +155,8 @@ amount of data transfer.
 \paragraph*{Modes\protect \\
 }
 
-One of the biggest change introduced to BLE compared to Classic Bluetooth is the addition of the some new modes called smart modes\cite{bluetooth-chalmers}. These new modes takes
-away the necessity for pairing to exchange data. One of these mode is called \textquotedblleft broadcast\textquotedblright{}
+One of the biggest changes introduced to BLE compared to Classic Bluetooth is the addition of the some new modes called smart modes\cite{bluetooth-chalmers}. These new modes takes
+away the necessity for pairing to exchange data. One of these modes is called \textquotedblleft broadcast\textquotedblright{}
 mode where the device can send data in the advertisement channel\cite{ble-modes}. 
 
 There are 4 different modes in BLE: 
@@ -193,7 +193,7 @@ as every 20 millisecond.
 Similar to the Classic Bluetooth, the range of BLE is determined by
 the transmitting power and the interference that it might experience.
 BLE has a transmitting power up +10dBm, which gives it a range of
-300m theoretically\cite{bluetooth-chalmers}. However BLE usually use a power of 0dB or less
+300m theoretically\cite{bluetooth-chalmers}. However BLE usually uses a power of 0dB or less
 which gives it a range of about 50m. Even though BLE is meant to have
 low-energy consumption, it has a bigger range than Classic Bluetooth
 under maximum power due to smaller packet size. 
@@ -203,7 +203,7 @@ under maximum power due to smaller packet size.
 
 There are other technologies out there that could be used such
 as Zigbee\cite{zigbee}. However since these are not commonly supported by mobile
-devices. Therefore they have not been considered for the implementation.
+devices. Therefore they have not been considered for implementation.
 
 
 

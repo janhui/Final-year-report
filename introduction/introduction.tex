@@ -2,46 +2,46 @@
 \chapter{Introduction}
 
 \section{Motivation}
-Being a 90s kid we were exposed to an impressive array of gadgets through various blockbuster movies and television (TV) shows such as Star Wars and Star Trek. One of the unfortunate consequences of growing up is learning that majority of these gadgets are are just superficial and there are no product that actually meets the feats showed in the movies. It burst our bubble makes us wish there was something that would be as good. 
+Being the 90s kids we were exposed to an impressive array of gadgets through various blockbuster movies and television shows such as Star Wars and Star Trek. One of the unfortunate consequences of growing up is learning that majority of these gadgets are just superficial and there are no products that actually meets the feats showed in the movies. It bursts our naive bubble of expectation for such gadgets and makes us wish there were some product that could do justice to those gadgets. 
 
-Some of these have come to fruition over the years like the Smart watches, tablets etc. There are some that are still under development like the Google Glass, self driving cars. Then came the recent movies like Iron Man with more remarkable gadgets like the Iron Man suit and the J.A.R.V.I.S system. A lot of these newer has materialised as well, or a lot of research is being conducted in their different facets like natural language processing[recent research], Artificial intelligence().
+Some of these have come to fruition over the years like the Smart watches, tablets etc. There are some that are still under development like the Google Glass, self driving cars. Then came the recent movies like Iron Man with more remarkable gadgets like the Iron Man suit and the J.A.R.V.I.S system. A lot of these has materialised as well, or a lot of research is being conducted in their different facets like Natural Language Processing[recent research], Artificial Intelligence().
 \todo[inline]{find recent research}
 
-One of the device that has excited us and was common to most of these movies was the interactive table-esque display all of them had. Interactive tabletop, one of the synonym of interactive table, is defined as a \emph{“a large surface that affords direct, multi-touch, multi-user interaction"}\cite{interactive-table-def}. A lot of research has been undertaken in the interactive tabletop and interactive surface by various research groups backed by different entities. 
+One of the devices that has excited us and was common to most of these movies was the interactive table-esque display that all of them had. Interactive tabletop, synonym of interactive table, is defined as a \emph{"a large surface that affords direct, multi-touch, multi-user interaction"}\cite{interactive-table-def}. A lot of research has been undertaken in the interactive tabletop and interactive surface field by various research groups backed by different companies. 
 
-These research has culminated in some products being released to the market like the Samsung SUR40 using the Microsoft PixelSense software\cite{samsung-sur40} and FlatFrog\cite{flatfrog}. However One of the biggest drawbacks for these products is the lack of acceptance in the wider consumer market. This is primarily due to the exorbitant prices of these devices. For instance the Samsung SUR40 cost around £6000+ pound\cite{samsung-sur40-price}. There is a large scope potential for interactive tables in public collaborative locations like schools, public libraries. However due to the pricing it is not an accessible amenity for most of these entities??.
+These researches has culminated in some products being released to the market like the Samsung SUR40 using the Microsoft PixelSense software\cite{samsung-sur40} and FlatFrog\cite{flatfrog}. However, one of the biggest drawbacks for these products is the lack of acceptance in the wider consumer market. This is primarily due to the exorbitant prices of these devices. For instance the Samsung SUR40 cost around \£6000+ \cite{samsung-sur40-price}. There is a large scope potential for interactive tables in public collaborative locations like schools, public libraries. However due to the pricing it is not an accessible amenity for most of these facilities.
 
-One of the project that has tried to address this issue is the HuddleLamp project\cite{huddlelamp-paper}. They propose to bring together more recent inventions like tablets and smart-phones, and combining with off-the shelf webcams that has time of flight features, to create an ad-hoc interactive table. There will be a more in depth analysis of the HuddleLamp project in Section \ref{Sec:huddlelamp}.
+One of the projects that has tried to address this issue is called HuddleLamp\cite{huddlelamp-paper}. They propose to bring together more recent inventions like tablets and smart-phones and combine them with off-the shelf webcams that have time of flight features, to create an ad-hoc interactive table. There will be a more in depth analysis of the HuddleLamp project in Section \ref{Sec:huddlelamp}.
 
-There have been recent revelations, about some of the technologie,s that has impeded the research into HuddleLamp. The Software Development Kit (SDK) used by HuddleLamp was made obsolete by Intel as they created a completely new SDK which had similar features. Creative also ceased producing the webcam, Creative Senz3D, used by HuddleLamp. This meant that the HuddleLamp project was at a crossroad, where alternatives to the webcam and the SDK had to be found or the current software had to be ported so that the new SDK, Intel RealSense\cite{intel-realsense}, could be used.
+There have been recent revelations about some of the technologies that have impeded the research into HuddleLamp. The Software Development Kit (SDK) used by HuddleLamp was made obsolete by Intel as they created a new SDK which has similar features. Creative has also ceased producing the webcam, Creative Senz3D, used by HuddleLamp. This meant that the HuddleLamp project was at a crossroad, where alternatives to the webcam and the SDK had to be found or the current software had to be ported so that the new SDK, Intel RealSense\cite{intel-realsense}, could be used.
 
-Therefore the focus of this thesis is into finding an alternative to the hybrid sensing technique used by HuddleLamp project. Over the course of this thesis I will explain the two different approaches that we took, and the advantages and disadvantages of each. We will finish by looking at how this project could be taken forward and also what could be done differently if given the chance.
+Therefore the focus of this thesis is into finding an alternative to the hybrid sensing technique used by HuddleLamp project. Over the course of this thesis we will see the two different approaches that were undertaken, and the advantages and disadvantages of each. We will finish by looking at how this project could be taken forward and also what could be done differently if given the chance.
 
 
 \section{Objectives}
 
 \begin{itemize}
 \item The primary focus of this thesis is to find an alternative to the webcam and the SDK used by the HuddleLamp project
-\item Our secondary concern that we would look to solve is to try and make the system more portable and easier to recreate, by taking away the computer somehow.
-\item Another target for this project is to adopt a more simple architecture with the latest more widely used techonologies such as Firebase.
-\item I would like to culminate by creating a library that could aid other developers to create application to be used on the HuddleTable.
+\item Our secondary concern that we would look to solve is to try and make the system more portable and easier to recreate, by somehow taking away the computer.
+\item Another target for this project is to adopt a more simple architecture with the latest, more widely used technologies such as Firebase.
+\item We would like to culminate by creating a library that could aid other developers to create applications to be used on the HuddleTable.
 \end{itemize}
 
 \section{Contribution}
 
 \begin{itemize}
-\item Android porting
-\item attempted bluetooth
-\item User a more commercial datastore and created a library with API
+\item The successful porting of the HuddleLamp project from a C\# project to an Android application with limited functionality.
+\item Eliminated Bluetooth and Bluetooth Low Energy as a potential technology for finding the position of the tablets.
+\item Used Firebase which is a more commercial data store with a larger community support and has the backing of Google.
 \end{itemize}
 
 \section{Report Structure}
 
 The remainder of this report is separated into four chapters:
 \begin{itemize}
-\item Background Research (page \pageref{ch:background})
-\item Device Camera (page \pageref{ch:devcamera})
-\item No Camera (page \pageref{ch:no_camera})
-\item Conclusion (page \pageref{ch:conclusions})
+\item Background Research (page \pageref{ch:background}) which shows the related work we found on the subject. There has been a lot of work in the interactive table and smart-room field of technology.
+\item Device Camera (page \pageref{ch:devcamera}) is a chapter where we go into depth about the implementation where we substitute an Android device for the webcam. We have an in-depth discussion and analysis on all the technology choices that had to be made. There is also a description of the implementation and also the evaluation of the product.
+\item No Camera (page \pageref{ch:no_camera}) is a chapter on the attempted elimination of any use of Computer Vision algorithms creating a simpler physical system. Similar to the previous section there is an in-depth discussion and analysis on all the technology choices that had to be made. Various implementation were undertaken and evaluated on the project and subsequent data is provided to show the reason of failure.
+\item Conclusion (page \pageref{ch:conclusions}) shows the final thoughts on the project where we critique the process undertaken and identify points of improvement. There is also a section on future work to be undertaken to improve the project, where we identify the potential new paths that can take the project into a new direction. 
 \end{itemize}
 

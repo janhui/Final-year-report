@@ -3,72 +3,69 @@
 
 \subsubsection{Java}
 
-Java is one of the most widely used language fro development. It also
-has the unique advantage that Java programs compiles to a Java bytecode,
+Java is one of the most widely used language for development. It also
+has the unique advantage that Java programs compile to a Java bytecode,
 which runs on a Java Virtual Machine. This means that as a developer
 they would only usually have to create the program once and it would
 run on most machines. 
 
 Java also happens to be the native language for Android, making it
 an ideal choice of language for an Android developer. Android platform
-has a market share of around 81.5\%\cite{market-share}. Which means
+has a market share of around 81.5\% of mobile devices\cite{market-share}, which means
 creating a library for android made the perfect sense. More people
 are likely to have an Android device during a meeting and also there
-is a more likely hood that there would a lot more spare Android devices
+is a more likelihood that there would be a lot more spare Android devices
 which can be used to create the screen for the table. Android devices
 are also extremely cheap which means even if the users had to buy
-some devices to use the interactive table it would be relatively cheap.
+some devices to use the interactive table it would be financially viable\cite{cheap-android}.
 
-By creating the library in Java there would be more likely hood for
+By creating the library in Java there would be more possibility for
 adoption by other users due to the ease in which someone could pick
-it up and also due to the large number of Android developers other
-there already. There are lot of vendors that produce cheap Android
-devices\cite{cheap-android}. 
+it up and also due to the large number of Android developers already out there. 
 
+
+\todo[inline]{not sure if this should be here}
 One of the biggest disadvantage of using Android devices with BLE
 technology is the the Android Bluetooth Crash bug\cite{bluetooth-share}.
 There is a bug in Bluetooth stack of Android where an Android device
-can only see 1,990 different Bluetooth MAC addresses before the Android
+can only see 1,990 different Bluetooth MAC addresses, over its lifetime, before the Android
 BluetoothService crashes. Android also periodically saves its list
 of recent mac address which means this stored list could get filled
 up pretty quickly. Small iBeacons such as the Gimbal by Qualcomm generates
 a new MAC address for itself every 0.8 seconds which means this list
 could get filled very quickly. When is this list gets filled up an
-error dialogue saying \emph{Unfortunately, Bluetooth Share
-has Stopped} shows up. The only real solution to this
-problem is a downloading an application called Bluetooth Crash Resolver by radius
+error is shown. The only real solution to this
+problem is downloading an application called Bluetooth Crash Resolver by radius
 network which is not a perfect solution but the best there is right
 now.
 
 
 \subsubsection{Object C/Swift}
 
-Object C/ Swift is native language for iOS platform used by the Apple
+Object C/ Swift is the native language for iOS platform used by Apple
 devices. With a 14.8\% market share iOS is the second biggest mobile
-platform out there\cite{market-share}. They recently brought out
-another language called Swift which is also another language that
-could used for development in the iOS platform. iOS was a platform
+platform\cite{market-share}. They recently brought out
+another language called Swift which could be used for development in the iOS platform. iOS was a platform
 that was brought in 2007 and over the last 8 years, over one billion
 iOS devices has been sold\cite{oneBios}.
 
-Over 1.4 million iOS applications has been published in Apples App
-store, showing that large number of developers has adopted Apple products
-and are creating Apps for the platform. Apple is also the company
-the coined the term iBeacon which are a ``new class of low-powered,
+Over 1.4 million iOS applications have been published in Apple's App
+store, showing that large number of developers have adopted Apple products
+and are creating apps for the platform. Apple is also the company
+that coined the term iBeacon which are a ``new class of low-powered,
 low-cost transmitters that can notify nearby iOS 7 or 8 devices of
-their presence.'' This means that iOS platform has a more mature
-codebase for BLE technology and also there are a lot more support
+their presence.'' This means that the iOS platform has a more mature
+codebase for BLE technology and also there is a lot more support
 for it. The iOS CoreLocation\cite{corelocation} framework is a relatively
-more accurate feature giving iOS a very good advantage while working
-with BLE technology. The Bluetooth stack used by Apple product is
-a much more efficient one.
+more accurate framework, giving iOS a very good advantage when working
+with BLE technology. The Bluetooth stack used by Apple products is
+a more efficient one compared to the Android Bluetooth stack.
 
-However for a developer there quite a lot of requirements before being
+However for a developer there are quite a lot of requirements before being
 able to develop for an Apple platform. Unlike Android development
-an iOS developer needs to have an Apple computer and a Apple developer
+an iOS developer needs to have an Apple computer and an Apple developer
 License before they can create apps for the platform, neither of which
-are cheap. Apple devices are also rather expensive to buy and there
-fore unlike for people to have it just laying around.
+are cheap. Apple devices are also rather expensive to buy and it is unlikely for people to have it just laying around.
 
 
 \subsubsection{JavaScript}
@@ -76,21 +73,20 @@ fore unlike for people to have it just laying around.
 JavaScript is also another viable language for creating applications
 for mobile devices especially since the introduction of frameworks
 such as PhoneGap\cite{phonegap} and Ionic\cite{ionic}. Mobile Frameworks
-such as these work on top Apache Cordova which allows developers to
-create a application using web technologies such as HTML5, CSS3 and
+such as these work on top of Apache Cordova which allows developers to
+create an application using web technologies such as HTML5, CSS3 and
 JavaScript instead of using the platform specific APIs like those
 in iOS and Android. Cordova wraps these web application to work on
-different devices. These applications are called Hybrid applications
-since they are not truly native mobile application or web application.
+different devices. These applications are called hybrid applications
+since they are not truly native mobile or web application.
 
-The use of web-based technologies leads many PhoneGap applications
-to run slower than native applications with similar functionality.
+The use of web-based technologies makes many PhoneGap applications run slower than native applications with similar functionality.
 However PhoneGap supports development for iOS, Blackberry, Android,
 LG webOS, Microsoft Windows Phone (7 and 8), Nokia Symbian OS, Tizen
 (SDK 2.x), Bada, Firefox OS, and Ubuntu Touch making it one of the
-best language to use while creating an application to get the most
+best languages to use while creating an application to get the most
 exposure for the library. It also supports most of the features of
-a phone that a native language does as well like Accelerometer, Compass
+a phone that a native language supports such as Accelerometer, Compass
 etc.
 
 
