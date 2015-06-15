@@ -1,15 +1,16 @@
 \section{Evaluation}
-I devised a few methods to test my implementation on it accuracy. Since there were multiple facet, I have separate tests for each of them.
+I devised a few methods to test the accuracy of my implementation. Since there were multiple facets, I have separate tests for each of them.
 \subsection{Distance}
-The distance between the beacon and the device is one of the biggest contributor towards the trilateration part of the positioning algorithm. The test I devised was to log the values that the distance function showed for every 5cm interval between 5 cm - 50cm.
+The distance between the beacon and the device is one of the biggest contributors towards the trilateration part of the positioning algorithm. The test I devised was to log the values that the distance function showed for every 5cm interval between 5 cm - 50cm.
 
 I tested the distance given by the function computeAccuracy() first. Table \ref{tableOfComputeAccuracyOldAndroid} shows the average distance shown by the library at each intervals. However as you can see from the figure () there was a large error rate in the values. 
 
 My research had shown that another potential method of getting the distance of a receiver from the BLE emitter was by analysing the RSSI signal and the Transmission power. Therefore I logged the RSSI value and Transmission Power for those distances to calculate the relationship between RSSI, Transmission Power and the actual distance. Table \ref{tableOfRSSIOldAndroid} shows the result for each distance. By plotting a graph on it, I was able to calculate the relationship between them. Figure \ref{oldRSSIDistance} shows the graph, which shows that the distance is \enph{y = mx+c}.
 \todo[inline]{do the equation}
 However even using the formula for distance I found out that the values were still error prone. This meant that the trilateration will not work, therefore the underlying basis of my project was flawed.
+
 \subsubsection{Problems}
-One of the big problems face during this test was the Bluetooth Share Bug\cite{bluetooth-share} which kept showing up on one of the tablet used. Another was the face there seemed to be a discernible difference in reading between different versions of Android OS. Therefore I also did these tests in Android versions () () . The results of which could be seen in Table \ref{tableOfRssiNewAndroid} and \ref{tableOfComputeAccuracyNewAndroid} and Figure \ref{newRSSIDistance} and \ref{newComputeAccuracyDistance}.
+One of the big problems faced during this test was the Bluetooth Share Bug\cite{bluetooth-share} which kept showing up on one of the tablet used. Another was the fact there was a discernible difference in reading between different versions of Android OS. Therefore I also did these tests in Android versions () () . The results of which could be seen in Table \ref{tableOfRssiNewAndroid} and \ref{tableOfComputeAccuracyNewAndroid} and Figure \ref{newRSSIDistance} and \ref{newComputeAccuracyDistance}.
 
 \todo [inline]{find android versions}
 \subsection{Displacement}
