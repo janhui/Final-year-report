@@ -52,7 +52,20 @@ $\pgfmathprintnumber{\pgfplotstableregressiona} \cdot x
     xmin=0
 ]
 \addplot table [only marks, mark = *] {\distanceOldComputeAccuracy};
-\addplot [thick, red] table[y={create col/linear regression={y=X}}]{\distanceOldComputeAccuracy};
+\addplot [thick, red] table[y={create col/linear regression={y=X}}]
+{
+y x\\
+0.05 0.015\\
+0.1	0.041\\
+0.15 0.125\\
+0.2	0.141\\
+0.25 0.124\\
+0.3	0.034\\
+0.35 0.153\\
+0.4	0.358\\
+0.45 0.275\\
+0.5	0.255\\
+};
 \addlegendentry{%
 $\pgfmathprintnumber{\pgfplotstableregressiona} \cdot x
 \pgfmathprintnumber[print sign]{\pgfplotstableregressionb}$}
