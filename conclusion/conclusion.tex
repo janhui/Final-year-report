@@ -3,26 +3,34 @@
 
 \label{ch:conclusions}
 
-\section{Applications}
+In this chapter we reflect on our achievements, summarise the lessons we have learned and describe some potential future works that could be done on the project.
+
+\section{Achievements}
 
 
 \emph{The project's conclusions should list the things which have been learnt as a result of the work you have done. For example, "The use of overloading in C++ provides a very elegant mechanism for transparent parallelisation of sequential programs", or "The overheads of linear-time n-body algorithms makes them computationally less efficient than O(n log n) algorithms for systems with less than 100000 particles". Avoid tedious personal reflections like "I learned a lot about C++ programming...", or "Simulating colliding galaxies can be real fun...". It is common to finish the report by listing ways in which the project can be taken further. This might, for example, be a plan for doing the project better if you had a chance to do it again, turning the project deliverables into a more polished end product, or extending the project into a programme for an MPhil or PhD.}
 
-\begin{itemize}
-\item talk about sucesss
-\item talk about bluetooth failure
-\item doesnt do spatial menus
-\item talk about how  I might start differently (microservice) pros and cons
-\item nearables
-\end{list}
+Over the course of this thesis we have seen the evolution of HuddleLamp project through various phases. Setting out with the goal of creating a provisional, portable, interactive table from everyday objects. We can be delighted in the accomplishment of the Device camera application part of the project. The moderate success of the application demonstrate its potential given better resources.
 
+Furthermore, attempting the projects natural progression to its next milestone gave us valid insights to the potential path it could take. Having researched into various radio frequency signals that we was available. Eventually selecting and using Bluetooth Low Energy signal to create a tracking and positioning algorithm enlightened us to the various pitfalls of the idea. Various errors and the problems we faced showed us that, the line of investigation that we were following has limited possibilities and eventually not a practical path to follow.
 
+Identified and implemented a simple API for the data storage module of the application, creating a reusable real-time data storage. Working with the new Firebase API gives us the advantqage of a wider community support and meets all our requirement for the applications.
+
+\section{Lessons Learned}
+
+It has been a very enlightening project, giving us the opportunity to investigate into various feature and technologies available. Having spent the vast majority of time on the No camera implementation of project enabled us to learn and understand the different RF signals and types of positioning algorithms associated with them. Giving us a variety of insights into different projects that uses these technologies such as indoor positioning projects. 
+Working with BLE technology gave us awareness of the different stack each has on different platforms. It enabled us to harness the technology to our need for the project we had. Learning about the passive listening mode showed us the potential of the technology gave us the chance to work with beacons. Attending a Hackathon dedicated to beacon technology, gave us the chance to see potential applications for the technology and contribute to idea with the knowledge gained from the project.
+
+Creating multiple Android applications to meet the various requirements, gave us the chance to 
 \section{Future Work}
 \begin{itemize}
 \item port it to microservice
+\item doesnt do spatial menus
 \item using a more resourceful tablet
 \item decrease jni calls
+\item security
 \item port it to more mobile devices
+\item nearables
 \end{itemize}
 
 REFRAcT it to be a library 
