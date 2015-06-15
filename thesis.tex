@@ -2,6 +2,7 @@
 \documentclass[a4paper,11pt,twoside]{report}
 \usepackage[left=2cm,right=2cm,top=2cm,bottom=3cm]{geometry}
 \usepackage[toc,page]{appendix}
+\usepackage{fix-cm}
 
 \usepackage{filecontents}
 \usepackage{listings}
@@ -64,19 +65,20 @@ Y X
 0.35 0.8483333333
 0.4	0.91
 0.45 0.9033333333
-0.5	0.0
+0.5	0.9
 }\distanceNewRSSI
 
 \begin{document}
 
-\title{\LARGE {\bf HuddleTable}\\
- \vspace*{6mm}
+% \title{\Huge {\bf HuddleTable}\\
+\title{\fontsize{40}{50}\selectfont {\bf HuddleTable}\\
+%  \vspace*{6mm}
 }
 
 \author{Jose Kalladanthyil}
 \submitdate{June 2015}
 
-\normallinespacing
+% \normallinespacing
 \maketitle
 
 \preface

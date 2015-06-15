@@ -9,28 +9,74 @@
 \def\submitdate#1{\gdef\@submitdate{#1}}
 
 \def\maketitle{
-  \begin{titlepage}{
-    %\linebreak
+
+\newcommand{
+
+  \thispagestyle{empty}
+         %\linebreak
+         \begin{center}\sffamily\LARGE{
     Imperial College of Science, Technology and Medicine \\
     %\linebreak
-    Department of Computing
+    Department of Computing\\
+    }\end{ceter}
     \rm
-    \vskip 0.3in
-    \includegraphics[scale=0.1]{imperialcrest}
-    \vskip 0.3in
-    \Large \bf \@title \par
-  }
-  \vskip 0.3in
-  \par
-  {\Large \@author}
-  \vskip 4in
-
-  \par
-  Submitted in part fulfilment of the requirements for the degree of 
+  \vspace*{\stretch{1}}
+  {\parindent0cm
+   \rule{\linewidth}{.5ex}}
+  \begin{center}
+    \sffamily\bfseries\HUGE
+    \@title 
+  \end{center}
+  \rule{\linewidth}{.7ex}
+  \begin{flushright}
+    \fontsize{16}{20}\selectfont \bf
+    \@author \\
+    \vspace*{\stretch{1}}
+    \fontsize{16}{20}\selectfont {\textit{Supervisor \;\;\;\,}\\
+    Julie McCann\\
+    \end{flushright}
+  \vspace*{\stretch{5}}
+  \begin{center}
+    \includegraphics[width=2in]{imperialcrest}
+  \end{center}
+  \vspace*{\stretch{1}}
+  \begin{center}\sffamily\LARGE{
+     Submitted in part fulfilment of the requirements for the degree of 
   \linebreak
   Master in Engineering in Computing, \@submitdate
-  \vfil
-  \end{titlepage}
+}\end{center}
+  \newpage
+  \thispagestyle{empty}
+
+  \cleardoublepage
+
+}
+
+
+
+
+%   \begin{titlepage}{
+%     %\linebreak
+%     Imperial College of Science, Technology and Medicine \\
+%     %\linebreak
+%     Department of Computing
+%     \rm
+%     \vskip 0.3in
+%     \includegraphics[scale=0.1]{imperialcrest}
+%     \vskip 0.3in
+%     \Large \bf \@title \par
+%   }
+%   \vskip 0.3in
+%   \par
+%   {\Large \@author}
+%   \vskip 4in
+
+%   \par
+%   Submitted in part fulfilment of the requirements for the degree of 
+%   \linebreak
+%   Master in Engineering in Computing, \@submitdate
+%   \vfil
+%   \end{titlepage}
 }
 
 \def\titlepage{

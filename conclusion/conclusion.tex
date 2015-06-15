@@ -23,14 +23,21 @@ Creating multiple Android applications to meet the various requirements, gave us
 By creating the Device camera applications we had to opportunity to work with computer vision libraries. Giving us the unique experience of trying to get complicated resource intensive tasks work with small less powerful tools. OpenCV applications are not generally associated with android applications, therefore it was interesting working with OpenCV4Android and improvising to meet some of the objectives of this project. In the process gaining valuable insight into the computer vision research field.
 
 \section{Future Work}
-\begin{itemize}
-\item port it to microservice
-\item doesnt do spatial menus
-\item using a more resourceful tablet
-\item decrease jni calls
-\item security
-\item port it to more mobile devices
-\item nearables
-\end{itemize}
 
-REFRAcT it to be a library 
+\subsection{Microservice}
+Over the course of the device camera implementation, a constant hindrance we faced was the heavy workload taken by the CameraApp. In hindsight, creating a microservice for the vision algorithm, which could be running on a server could have improved the performance. It has a potential to not work as well as the current implementation because we would be uploading video and analysing the information on the live video. Therefore internet speed could greatly influence the improvement in performance we would get. However it would have been a line of investigation I would have liked to take if given the time.
+
+\subsection{Devices}
+Another interesting investigation would have been trying to use a device with better resource for the CameraApp to see the difference it made. A device such as the Samsun Galaxy Tab S or a Asus Zenfone 4 would have been a good device to try the application with. The difference could be substantial or not at all, however that investigation could shed some light on ways to take the application forward. Especially if we were also investigate decreasing the number of JNI calls we do by creating a single C++ file and investigate using that class.
+
+\subsection{Features}
+Currently the Device camera implementation has a subset of functions that HuddleLamp project has. Given more time we would have liked to implement more features such as spatial menus and more gestures onto the project. A feature that would have had a big impact would have been adding something similar to the canvas application we built for the No Camera implementation.
+
+\subsection{Security}
+The glaring omission from the current architecture, that would take priority before commercialising this product, would be the lack of security in the application. Currently there is no security features added to the application, anyone can join any sessions deliberately or accidentally. This would have to be rectified by implementing a login or user system with administrative privileges to the organiser of the "Huddle". There is option for someone to join a system remotely as long as they have a CameraApp and TableApp running in a separate setup and they used the same session name, this is an interesting side-effect of out setup which had to be investigated before deciding whether to keep it or not.
+
+\subsection{Platforms}
+Another less priority work would be the porting of the applicatoin to different platforms such as iOS and Windows Phone. It would be interesting to see how the application works on a tablet such as the Microsoft Surface Tablet which usually has a much better resource under the hood. Logically, it should give us a better performance. By porting the application we would be expanding the potential user base increasing the probability of the adoption of the product.
+
+\subsection{Nearables}
+Something that would that could recover the No Camera implementation is adding instrumentation onto the devices. For instance I could add the Estimote stickers which have their own accelerometer and BLE features and then use the result from both the stickers and the devices to create the positioning algorithm. By comparing and combination multiple values there is a potential to improve the accuracy of the positioning and tracking system. However we have reluctance in adding extra gadgets onto the devices as these are usually not everyday object that people could have laying around.
