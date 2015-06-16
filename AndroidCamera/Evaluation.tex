@@ -11,7 +11,7 @@ By creating this class it would decrease the number of JNI calls as well as maki
 
 Getting the application to successful integrate OpenCV and detect the device was a good success, however there are some drawbacks in the project which makes it not ideal. 
 
-One of the main drawbacks of the project is the lack of resources on the device. I used a nexus 7 as my device for the CameraApp, which is a relatively powerful device out of all the options of android devices. It ranked as the 5\textsuperscript{th} best android tablet in the world\cite{techradar-android-tablets}. Using it I was only able to get a refreshing rate of \textless 1 Frames per second (fps). However after I took advantage of the multiple core in the device I was able to improve the refreshing rate to be (). Table \ref{refresh_rate_table} shows the improvement in the refresh rate after the optimisation. I could also have tried it on a Samsung Tab S which has a much better resources which would definitely improve the refresh rate. Table \ref{spec_comparison} shows the difference in resource between the Nexus 7 and Samsung Tab S
+One of the main drawbacks of the project is the lack of resources on the device. We used a nexus 7 as our device for the CameraApp, which is a relatively powerful device, out of all the options of android devices. It ranked as the 5\textsuperscript{th} best android tablet in the world\cite{techradar-android-tablets}. However we were only able to get a refreshing rate of \textless 1 Frames per second (fps). However we believe this could be improved by taking advantage of the multi-core of the device. Table \ref{refresh_rate_table} shows the improvement in the refresh rate after the optimisation. We would have also liked to investigate the application on a Samsung Tab S which has a much better resources which would definitely improve the refresh rate. Table \ref{spec_comparison} shows the difference in resource between the Nexus 7 and Samsung Tab S
 \begin{table}[h]
     \centering
     \begin{tabular}{|c|c|c|}
@@ -31,7 +31,7 @@ One of the main drawbacks of the project is the lack of resources on the device.
     \label{spec_comparison}
 \end{table}
 
-Another improvement I could have made was to create a C++ class that encapsulate all of the OpenCV processes that I would use. This would decrease the number of JNI calls I would have had to make. Currently I was using around () JNI calls in single thread, () in multi-thread. I would have been able to decrease that to just 2 if I made the C++ class. It would be something I would have liked to try out to evaluate how much improvement it would have made to my refresh rate. However that will be one of the future work I would like to do.
+Another improvement we could have implemented was to create a C++ class that encapsulate all of the OpenCV processes that we used. This would decrease the number of JNI calls we had to make. Currently we are using around 32 calls to the OpenCV library, which means there are around 64 calls in the single thread the single thread application. We would have been able to decrease that to just 2 by creating the C++ class. It would be something something interesting to evaluate, and see how much difference it would have made to our refresh rate. However that will be one of the future work we will discuss about.
 
 \begin{table}[h]
 \centering
@@ -47,14 +47,8 @@ Before Optimisation (fps) & After Optimisation (fps)\tabularnewline
 \caption{A table to show the difference in refresh rate after optimisation}
 \label{refresh_rate_table}
 \end{table}
-\todo[inline]{todo the refresh rate values after threading}
-As a consequence of the low refresh rate I had to scale back my implementation so that the devices had to be static. I realised keeping track of mobile devices using functions allowed by OpenCV like optical flow would have taken up too much resources and slowed it down even further. However it is something else I would like to try using a device with a better specification.
+As a consequence of the low refresh rate we had to scale back our implementation such that the devices had to be static. Keeping track of mobile devices using functions allowed by OpenCV like optical flow would have taken up too much resources and slowed it down even further. However it is something else we would have liked to attempted using a device with a better specification.
 
-One of the other potential problem was that the colour detection could be a problem if the CameraApp lose track of position. If the device was not built as static and was able to move then the CameraApp could potential lose track of it, for which I have not implemented a solution for. One of the potential solution would be to wrap the outer edge with specific colour of the device so that the CameraApp could always keep track of it.
+One of the other potential obstacle was the colour detection we currently use might fail if the CameraApp lose track of position. If the device was not built as static and was able to move then the CameraApp could potential lose track of it. One of the potential solution would be to wrap the outer edge with specific colour of the device so that the CameraApp could always keep track of it.
 
-Another problem in the implementation that I have not dealt with is the lack of security or moderation for the application. In the current implementation there is a possibility of someone joining into the session from somewhere else. For example someone could make a mistake in their session name and could accidentally join a session that could be happening at a different location which could lead to dire consequences. I have not implemented any user level security features where someone (administrator) could add or delete users to a session. A good side-effect is they do not all have to be at one location to use the application, they do however have to have both TableApp and CameraApp. 
-
-
-\begin{itemize}
-\item qualitative
-\end{itemize}
+Another problem in the implementation that we have not dealt with is the lack of security or moderation for the application. In the current implementation there is a possibility for someone join into the session from somewhere else. For example someone could make a mistake in their session name and could accidentally join a session that could be happening at a different location which could lead to dire consequences. Currently there is no user level security features where someone (administrator) could add or delete users to a session. An advantage is that all the users does not have to be at one location to join into a session, they do however have to have both TableApp and CameraApp. 

@@ -6,7 +6,7 @@
 \section{Introduction} 
 
 Interactive tables are by no means a new idea. A lot of research has
-been undertaken to find a simple suitable solution for the problem of having a interactive table for the the consumer market.
+been undertaken to find a simple suitable solution for the problem of having a interactive table for the consumer market.
 
 \subsection{Huddle Lamp} \label{Sec:huddlelamp}
 \begin{figure}[H]
@@ -17,12 +17,11 @@ been undertaken to find a simple suitable solution for the problem of having a i
 HuddleLamp aims to use the multitude of unused tablets and smart-phones,
 which people have lying around to, create an ad-hoc interactive table
 by using a novel sensing and detection method to deduce where the
-devices are and what they should be show. The research into HuddleLamp\cite{huddle-link}, is the work that
-is most similar to mine. HuddleLamp is trying to bring the option of having interactive tables to a wider market. Every day consumers such as schools and public libraries find it difficult to install an interactive table.
+devices are and what they should be show. The research we have undertaken is building on top of HuddleLamp and a contribution towards it\cite{huddle-link}. HuddleLamp is trying to bring the option of having interactive tables to a wider market. Every day consumers such as schools and public libraries find it difficult to install an interactive table.
 
 
 HuddleLamp\cite{huddlelamp-paper} proposes to use some cheaper
-off-the-shelf products like a web cam, and a lamp fixture to create a cheaper
+off-the-shelf products like a webcam, and a lamp fixture to create a cheaper
 interactive table that anyone could use. HuddleLamp\cite{huddlelamp-paper} introduces a hybrid sensing approach that uses RGB (the red, green and blue light information for each pixel) and depth data, that can be obtained from sophisticated webcams like the Creative senz3d\cite{creative-senz3d}, which can detect and identify mobile displays on tables and track their positions and orientations. The project attempts to provide a way for multiple devices to interact with each other and become one seamless multi-device user interface.
 
 One of the main advantages of HuddleLamp was the fact that you can add a device onto the user interface (UI) in a seam-less, ad-hoc manner. Using HuddleLamp,
@@ -34,11 +33,11 @@ the new device to the \textquotedblleft Huddle\textquotedblright .
 The camera also tracks the hand movements of the user, enabling interactions
 between the devices.
 
-The simplicity in adding a device to the table means users are not
+The simplicity in adding a device to the table means that the users are not
 constrained by having specific devices or requiring them to download
 particular apps. This also means collaboration can occur on tables
 that are cluttered with other objects likes pens and pencils since the algorithm is designed to ignore everything else on the table. There
-are 2 main components that are required for HuddleLamp;
+are two main components that are required for HuddleLamp;
 a depth camera, \citeauthor{huddlelamp-paper} suggest Creative Senz3D\cite{creative-senz3d} camera, and a desk lamp, both
 are relatively inexpensive components compared to an interactive table.
 
@@ -66,7 +65,7 @@ an interactive table. It is a mobile, context aware
 information appliance, which uses a pen-based interaction. It uses
 dynamic, flexible coupling of displays to circumvent the limitation
 of display real estate. By using in built sensors it has the ability
-to merge displays, when they come together, to form a homogeneous physical
+to merge displays, when the devices come together, to form a homogeneous physical
 display. When 2 or more ConnecTables are connected, users are able
 to exchange information by shuffling them over to the other display.
 It predominantly has a pen based interaction, however it also provides sensors
@@ -90,8 +89,7 @@ table has a coil which emits an electromagnetic wave and a transponder
 from the connecting table sends its 32 bit identification number
 back to the initiating table. The identification mechanism works in
 a range of around 3cm and takes nearly 1.5 seconds to complete.
-
-\todo[inline]{disadvantages}
+The main disadvantage of the connecTable configuration is lack of portability since carrying around a table is not a viable option.
 
 \begin{figure}[h]
 \centering
@@ -105,7 +103,7 @@ Beamatron \cite{beamatron} is a contribution by Microsoft research,
 in to the fields of Spatial Augmented Reality. It uses depth cameras
 with proprietary algorithms and techniques to render graphics precisely
 onto the real world according to the user's point of view. By using a
-depth camera they were able to add more modes of interaction to augmented
+depth camera \citeauthor{beamatron} were able to add more modes of interaction to augmented
 reality, i.e moving objects or holding onto an object. It has the capabilities
 to allow live changes on the projections. It can reason with room
 coordinates and render 3D objects in precise orientation and also uses 3D
@@ -125,10 +123,8 @@ hardware-based feedback which allowed graphics to be stabilised.
 
 One of the biggest shortcomings of placing a steerable display in
 the centre of the room is that the information received is limited
-to the view of the single camera. They compensated for the lack of
-depth information by mounting multiple 3 Kinect sensors to the corners
-of the room and using triangulation to find sources of sound and in
-turn identifying the presence of the user. They reported some shortcomings
+to the view of the single camera. Lack of depth information was compensated by mounting multiple 3 Kinect sensors to the corners of the room and using triangulation to find sources of sound and in
+turn identifying the presence of the user. \citeauthor{beamatron} reported some shortcomings
 in their technique, failures occurred especially when the user is standing beneath the
 Beamatron.
 The ideas and technique explored for Beamatron were intriguing. Especially
@@ -149,13 +145,13 @@ required.
 
 LightSpace is another research contribution by Microsoft in the "smart-room" field of research\cite{lightspace}. LightSpace is an office-sized room instrumented with projectors and depth cameras. These instruments combine together to help the user to touch and manipulate virtual objects that are in the room, on un-instrumented surfaces. The depth camera aids to determine the location of users hand by doing real-time 3d surface geometry. Some of the main motivation for the LightSpace project was to have: 
 \emph{Surface Everywhere} where all physical surface should be interactive displays, 
-\emph{The room is the computer} even the space between the physical surface should be interactive and 
-\emph{Body as display} graphics may be projected in onto the user's body to enable interactions such as holding and carrying the object.
-Their primary target was to enable interactivity and visual- izations throughout our everyday environment, without augmenting users and other objects in the room with sensors or markers\cite{lightspace}.
+\emph{The room is the computer,} even the space between the physical surface should be interactive and 
+\emph{Body as display} graphics may be projected onto the user's body to enable interactions such as holding and carrying the object.
+Their primary target was to enable interactivity and visualisations throughout our everyday environment, without augmenting users and other objects in the room with sensors or markers\cite{lightspace}.
 
 The LightSpace implementation is  a 10ft (W) x 8ft (D) x 9ft (H) interactive space in which we suspended 3 projectors and 3 depth cameras together from the ceiling (Figure \ref{lightspace-config})\cite{lightspace}.
 
-This project is quite similar to the Section \nameref{beamatron} project however LightSpace has a bigger field of vision due to its multiple projectors and depth cameras. LightSpace has made major breakthroughs in terms of converting 3D space into interactive space and also in terms of adding multiple interactions to a room. However this project is more useful for someone creating a smart room. Information about using vision manipulation could help for HuddleTable, however this an implementation that is fixed to an area and cannot be moved, which goes against my idea of having a very portable product that could be set up anywhere. 
+This project is quite similar to the Section \nameref{beamatron} project however LightSpace has a bigger field of vision due to its multiple projectors and depth cameras. LightSpace has made major breakthroughs in terms of converting 3D space into interactive space and also in terms of adding multiple interactions to a room. However this project is more useful for someone creating a smart room. Information about using vision manipulation could help for HuddleTable, however this an implementation that is fixed to an area and cannot be moved, which goes against the idea of having a very portable product that could be set up anywhere. 
 
 \subsection{SufacePhone}
 
@@ -166,7 +162,7 @@ It has touch and gesture interaction incorporated giving a
 realistic user experience. As the computing power of the mobile devices have
 increased and now rivals a desktop, users wants to do increasingly complex
 tasks on their mobile devices. However one of the main limitation
-of mobile devices are their display size. 
+of mobile devices is their display size. 
 
 SurfacePhone comes with a multitude of configurations. It could be
 used as Single-device, Single User (SDSU) or the projections can merge

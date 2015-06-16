@@ -1,5 +1,5 @@
 
-\subsection{Positioning algorithms}
+\subsection{Positioning algorithms} \label{posiitoning_alg}
 
 
 \subsubsection{Echolocation} \label{ecolocation}
@@ -106,7 +106,7 @@ while x <= maxx do
     x <- x + step
 end while
 return xm, ym
-\end{lstlisting}
+\end{lstlisting}\label{trilateration_psuedocode}
 \end{figure}
 
 Listing \ref{psuedo-code} shows the psuedo code for trilateration. However trilateration on its own is not a very good technique to identify the location because of data imperfection. \citeauthor{trilat-fusion} recommend we use something else along with trilateration for positioning system\cite{trilat-fusion}  such as Echolocation explained in \ref{ecolocation}.
@@ -147,11 +147,12 @@ steps are required beforehand by the user to get any acceptable results.
 
 \begin{figure}[H]
 \[
-x=\int\int a\mathrm{\text{ }d}t
+displacement =\int\int acceleration\mathrm{\text{ }d}t
 \]
  
 
 \protect\caption{Acceleration to displacement}
+\label{double_integration}
 
 
 \end{figure}
@@ -178,24 +179,4 @@ Gyroscopes are also used in INS. Another advantage is, that
 you can use them where magnetic compasses don't work such as the Huddle
 Telescope\cite{gyroscope-wiki}.
 
-\subsubsection{Filter Methods} \label{filter_methods}
 
-
-\paragraph{Kalman Filter}
-
-\begin{figure}[h]
-\begin{equation} \label{distance_formulae}
-\centering
-\hat{X}_{k} = K_{k}*Z_{k}+(1-K_{k})*\hat{X}_{k-1} 
-\end{equation}
-\begin{tabular}{@{}>{$}l<{$}l@{}}
-    \hat{X}_{k} & current estimation \\
-    K_{k} & Kalman gain \\
-    Z_{k} & measure value \\
-    \hat{X}_{k-1} & previous estimation \\
-
-  \end{tabular}
-\end{figure}
-
-
-\todo[inline]{do this section}

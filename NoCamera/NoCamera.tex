@@ -1,7 +1,7 @@
 
 
 \section{Design Choices}
-In a similar manner to \ref{design_choice_android_camera}, We will see some of the main design choices, encountered during the implementation phase of my project. We will attempt to outline a balanced view of the options available and justify the decisions taken.
+In a similar manner to \ref{design_choice_android_camera}, We will see some of the main design choices, encountered during the implementation phase of our project. We will attempt to outline a balanced view of the options available and justify the decisions taken.
 \subsection{Radio Frequency Signal}
 
 \subsubsection{Wi-Fi}
@@ -23,8 +23,8 @@ groups\cite{wifi-indoor}. Two positioning techniques have been particularly popu
 Signal Strength Cartography\cite{sig-cart} is a reference-based technique where you map the area
 with coordinates and the strength of the Wi-Fi signal, during an offline phase. Therefore when you
 are trying to locate the coordinates of the device, we can refer to the signal strength and choose the most probable one. There are two main steps
-for this technique, an offline "mapping" step, which could be done either
-by simulation or manually using measurements, and an "online" positioning
+for this technique, an offline ``mapping" step, which could be done either
+by simulation or manually using measurements, and an ``online" positioning
 step, which could be done either using a probabilistic or deterministic
 method. 
 
@@ -41,8 +41,8 @@ however we would require more than one, to get more accurate positioning
 of the devices. Wi-Fi works mainly by sending signals in channels,
 so having more than one Wi-Fi AP in a location could produce congestion
 in channels, which would create interference. Wi-Fi also has a higher
-power consumption. This is because of the larger range in which Wi-Fi
-sends out its signal about 20m\cite{wifi-wikipedia}. 
+power consumption due to its larger range (about 20m) in which Wi-Fi sends
+out its signals\cite{wifi-wikipedia}. 
 
 There is hope for using Wi-Fi as the main Radio frequency for our
 product in the future after the Wi-Fi Standards agency brings out
@@ -57,12 +57,9 @@ GPS is one of the most widely used features in our devices. Currently almost eve
 we use on our mobile devices request for GPS access which is a good indication of
 how prominant GPS is. It is a space based navigation system built, by The Department of Defence of USA, using the 24 satellites they had already in orbit\cite{gps_basics}. 
 
-GPS satellites transmit data continuously, which contains their current
-time and position. A GPS receiver listens to multiple satellites and
-solves equations to determine the exact position of the receiver and
-its deviation from true time. At a minimum, four satellites must be
-in view of the receiver in order to compute four unknown quantities
-(three position coordinates and clock deviation from satellite time). 
+GPS satellites transmit data continuously of their position. A GPS receiver listens to multiple satellites and
+solves a set of simultaneous equations to determine the exact position of the receiver. Atleast four satellites needs to have a direct line of sight to the receiver in order to solve for the four unknown quantities
+(three position coordinates and a clock deviation from satellite time). 
 
 The main advantage of GPS is that it is widely available.
 Almost all devices have a GPS receiver. It also has a very large
@@ -166,7 +163,7 @@ connections.
 \item [{Peripheral:}] A device can only have one active connection with
 the central mode 
 \item [{Broadcaster}] : Where you send data in the advertisement channel
-\item [{Observer:}] Where you listen to the advertisement channel
+\item [{Observer:}] Where you listens to the advertisement channel
 \end{description}
 
 \paragraph*{Scanning\protect \linebreak{}
@@ -193,7 +190,7 @@ as every 20 millisecond.
 Similar to the Classic Bluetooth, the range of BLE is determined by
 the transmitting power and the interference that it might experience.
 BLE has a transmitting power up +10dBm, which theoretically gives it a range of
-300m\cite{bluetooth-chalmers}. However BLE usually uses a power of 0dB or less
+300m\cite{bluetooth-chalmers}. However BLE usually uses a power of 0dBm or less
 which gives it a range of about 50m. Even though BLE is meant to have
 low-energy consumption, it has a bigger range than Classic Bluetooth
 under maximum power due to smaller packet size. 

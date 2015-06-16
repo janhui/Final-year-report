@@ -1,24 +1,20 @@
-\section{Evaluation}
-I devised a few methods to test the accuracy of my implementation. Since there were multiple facets, I have separate tests for each of them.
+\section{Evaluation} \label{nocamera-eval}
+We have devised a few methods to test the accuracy of our implementation. Since there were multiple facets, we have separate tests for each of the big milestones.
 \subsection{Distance}
-The distance between the beacon and the device is one of the biggest contributors towards the trilateration part of the positioning algorithm. The test I devised was to log the values that the distance function showed for every 5cm interval between 5 cm - 50cm.
+The distance between the beacon and the device is one of the biggest contributors towards the trilateration part of the positioning algorithm. The test we have devised was to log the values that the distance function showed for every 5cm interval between 5 cm - 50cm.
 
-I tested the distance given by the function computeAccuracy() first. Table \ref{tableOfComputeAccuracyOldAndroid} shows the average distance shown by the library at each intervals. However as you can see from the figure () there was a large error rate in the values. 
+We initially conducted the test for calculating the distance using the function computeAccuracy() that was available in the library. Table \ref{tableOfComputeAccuracyOldAndroid} shows the average distance we calculated at each of the interval. However as you can see from the Figures \ref{comparisonAndroidOld} and \ref{comparisonAndroidNew} there was substantial errors in the values. 
 
-My research had shown that another potential method of getting the distance of a receiver from the BLE emitter was by analysing the RSSI signal and the Transmission power. Therefore I logged the RSSI value and Transmission Power for those distances to calculate the relationship between RSSI, Transmission Power and the actual distance. Table \ref{tableOfRSSIOldAndroid} shows the result for each distance. By plotting a graph on it, I was able to calculate the relationship between them. Figure \ref{oldRSSIDistance} shows the graph, which shows that the distance is \enph{y = mx+c}.
-\todo[inline]{do the equation}
-However even using the formula for distance I found out that the values were still error prone. This meant that the trilateration will not work, therefore the underlying basis of my project was flawed.
+Our research had shown that another potential method of getting the distance of a receiver device from the BLE emitter was by analysing the RSSI signal and the Transmission power. Therefore we also logged the RSSI value and Transmission Power for those distances to calculate the relationship between RSSI, Transmission Power and the actual distance. Table \ref{tableOfRSSIOldAndroid} shows the result for each distance. By plotting a graph of the results, we were able to identify the relationship, shown by Figure \ref{oldRSSIDistance}. The relationship between distance and RSSI/TxPower is \emph{distance = 0.58 . (RSSI/TxPower) + 0.61} for devices running Android 4.4.2  and \emph{distance = 0.35 . (RSSI/TxPower) - 0.72} for Android version 5.0.2.
 
-\subsubsection{Problems}
-One of the big problems faced during this test was the Bluetooth Share Bug\cite{bluetooth-share} which kept showing up on one of the tablet used. Another was the fact there was a discernible difference in reading between different versions of Android OS. Therefore I also did these tests in Android versions () () . The results of which could be seen in Table \ref{tableOfRssiNewAndroid} and \ref{tableOfComputeAccuracyNewAndroid} and Figure \ref{newRSSIDistance} and \ref{newComputeAccuracyDistance}.
+However even using the relationship method we found out that the values were not accurate. We changed our distance calculating method such that we use the equations shown. However this gave us a horizontal straight line for both Android versions. This meant that using the distance for trilateration was going to flawed and litered with errors, therefore the underlying basis of our positioning algorithm was not going to work hence this path was not a viable option as a replacement for the camera. Figure shows the graph of computed distance value vs the correct distance for both versions of Android.
 
-\todo [inline]{find android versions}
-\subsection{Displacement}
-Another major facet of my project was the sensor fusion idea to get the positioning correct. I decided to conduct a test for this by moving the tablet across a distance of 5 - 50 cm in every 5 cm intervals and calculating the displacement. Table() shows the results for it.
+
+
 
 \begin{figure}
 \centering
-\fbox{
+\begin{minipage}{.5\textwidth}
 \begin{tikzpicture}
 \begin{axis}[
     enlargelimits=false,    
@@ -34,14 +30,11 @@ Another major facet of my project was the sensor fusion idea to get the position
 $\pgfmathprintnumber{\pgfplotstableregressiona} \cdot x
 \pgfmathprintnumber[print sign]{\pgfplotstableregressionb}$}
 \end{axis}
-\end{tikzpicture}}
-\caption{Graph to show the relationship of (RSSI/Transmission Power) and Distance old android version}
+\end{tikzpicture}
+\caption{Graph to show the relationship \\of (RSSI/Transmission Power) and \\Distance for Android version 4.4.2}
 \label{oldRSSIDistance}
-\end{figure}
-
-\begin{figure}
-\centering
-\fbox{
+\end{minipage}%
+\begin{minipage}{.5\textwidth}
 \begin{tikzpicture}
 \begin{axis}[
     enlargelimits=false,    
@@ -57,14 +50,39 @@ $\pgfmathprintnumber{\pgfplotstableregressiona} \cdot x
 $\pgfmathprintnumber{\pgfplotstableregressiona} \cdot x
 \pgfmathprintnumber[print sign]{\pgfplotstableregressionb}$}
 \end{axis}
-\end{tikzpicture}}
-\caption{Graph to show the relationship of computeAccuracy and Distance for old android version}
+\end{tikzpicture}
+\caption{Graph to show the relationship of computeAccuracy and Distance for Android version 4.4.2}
 \label{oldComputeAccuracyDistance}
+\end{minipage}
+\caption{Comparison of two different methods of finding distance for Android version 4.4.2}
+\label{comparisonAndroidOld}
 \end{figure}
+
+
 
 \begin{figure}
 \centering
-\fbox{
+\begin{minipage}{.5\textwidth}
+\begin{tikzpicture}
+\begin{axis}[
+    enlargelimits=false,    
+    title={},
+    xlabel={Actual Distance (m)},
+    ylabel={Calculated Distance (m)},
+    legend pos=north west,
+    xmin=0
+]
+\addplot table [only marks, mark = *] {\distanceNewRSSI};
+\addplot [thick, red] table[y={create col/linear regression={y=X}}]{\distanceNewRSSI};
+    \addlegendentry{%
+        $\pgfmathprintnumber{\pgfplotstableregressiona} \cdot x
+        \pgfmathprintnumber[print sign]{\pgfplotstableregressionb}$} %
+\end{axis}
+\end{tikzpicture}
+\caption{Graph to show the relationship \\ of (RSSI/Transmission Power) and \\ Distance for Android version 5.0.2}
+\label{newRssiDistanceGraph}
+\end{minipage}%
+\begin{minipage}{.5\textwidth}
 \begin{tikzpicture}
 \begin{axis}[
     enlargelimits=false,    
@@ -80,14 +98,19 @@ $\pgfmathprintnumber{\pgfplotstableregressiona} \cdot x
 $\pgfmathprintnumber{\pgfplotstableregressiona} \cdot x
 \pgfmathprintnumber[print sign]{\pgfplotstableregressionb}$}
 \end{axis}
-\end{tikzpicture}}
-\caption{Graph to show the relationship of computeAccuracy and Distance for newer Android version}
-\label{newRSSIDistance}
+\end{tikzpicture}
+\caption{Graph to show the relationship of computeAccuracy and Distance for for Android version 5.0.2}
+\label{newComputeAccuracyDistance}
+\end{minipage}
+\caption{Comparison of two different methods of finding distance for Android version 5.0.2}
+\label{comparisonAndroidNew}
 \end{figure}
+
+
 
 \begin{figure}
 \centering
-\fbox{
+\begin{minipage}{.5\textwidth}
 \begin{tikzpicture}
 \begin{axis}[
     enlargelimits=false,    
@@ -97,21 +120,53 @@ $\pgfmathprintnumber{\pgfplotstableregressiona} \cdot x
     legend pos=north west,
     xmin=0
 ]
-\addplot table [only marks, mark = *] {\distanceNewRSSI};
-\addplot [thick, green] table[y={create col/linear regression={y=X}}]{\distanceNewRSSI};
-    \addlegendentry{%
-        $\pgfmathprintnumber{\pgfplotstableregressiona} \cdot x
-        \pgfmathprintnumber[print sign]{\pgfplotstableregressionb}$} %
+\addplot table [only marks, mark = *] {\distanceUpdatedOld};
+\addplot [thick, red] table[y={create col/linear regression={y=X}}]{\distanceUpdatedOld};
+\addlegendentry{%
+$\pgfmathprintnumber{\pgfplotstableregressiona} \cdot x
+\pgfmathprintnumber[print sign]{\pgfplotstableregressionb}$}
 \end{axis}
-\end{tikzpicture}}
-\caption{Graph to show the relationship of (RSSI/Transmission Power) and Distance for newer Android version}
-\label{newComputeAccuracyDistance}
+\end{tikzpicture}
+\caption{Graph to show the relationship \\of the updated relationship of \\0.58.(RSSI/Transmission Power)+0.61\\and Distance for Android version 4.4.2}
+\label{oldRSSIDistance}
+\end{minipage}%
+\begin{minipage}{.5\textwidth}
+\begin{tikzpicture}
+\begin{axis}[
+    enlargelimits=false,    
+    title={},
+    xlabel={Actual Distance (m)},
+    ylabel={Calculated Distance (m)},
+    legend pos=north west,
+    xmin=0
+]
+\addplot table [only marks, mark = *] {\distanceUpdatedNew};
+\addplot [thick, red] table[y={create col/linear regression={y=X}}]{\distanceUpdatedNew};
+\addlegendentry{%
+$\pgfmathprintnumber{\pgfplotstableregressiona} \cdot x
+\pgfmathprintnumber[print sign]{\pgfplotstableregressionb}$}
+\end{axis}
+\end{tikzpicture}
+\caption{Graph to show the relationship\\of the updated relationship of\\0.35 . (RSSI/Transmission Power)-0.72\\andDistance for Android version 4.4.2}
+\label{distanceUpdatedNew}
+\end{minipage}
+\caption{Comparison of two different methods of finding distance for Android version 4.4.2}
+\label{ComparisonOfUpdateRelationship}
 \end{figure}
 
 
-\subsubsection{Problems}
 
-\subsection{Trilateration}
+
+
+\subsubsection{Problems}
+One of the big problems faced during this test was the Bluetooth Share Bug\cite{bluetooth-share} which kept appearing on one of the tablet. This was identified previously during our language choice in Section \ref{java}. 
+
+Another was the fact there was a discernible difference in the readings between different versions of Android OS. Therefore we conducted the tests in Android versions 4.4.2 and also in version 5.0.2. The results of which could be seen in Figure \ref{oldComputeAccuracyDistance} and Figure \ref{newComputeAccuracyDistance} for computeAccuracy() and Figure \ref{oldRSSIDistance} and Figure \ref{newRssiDistanceGraph} for the relationship between RSSI and TXPower. As you can see from the graph there is a difference in the factor of 0.25 in the gradient of both comparison. Which is quite a substantial difference to have between two different versions. Especially as the devices people would have laying around would be unlikely to be having the same version.
+
+As you can see from Figure \ref{ComparisonOfUpdateRelationship} even the updating our distance function to use the relationship between RSSI and TxPower (using the equation found in Figure \ref{comparisonAndroidNew} and Figure \ref{comparisonAndroidOld}) we were still not able to get a gradient close to 1. A gradient close to 1 would have showed that the calculated distance was similar to the actual distance. This meant that the trilateration part of our algorithm was not going to work. Further work on this line of investigation could be conducted once the primary objective of successful implementation of the positioning algorithm. This could be done by either investigating one of the other positioning techniques discussed in Section \ref{posiitoning_alg} or by creating a whole new positioning technique.
+
 
 \subsection{Strengths and Weakness}
- 
+The major contribution of this investigation has been the successful implementation of the database API created in the previous stage of the project, Section \ref{ch:devcamera}. Extending it for application such as drawing meant that another big milestone has been achieved. This means a better positioning algorithm could unleash the potential of a fully functioning, feature rich interactive table that all users could enjoy.
+
+The main weakness of the project was the lack of success of trilateration positioning algorithm. By using a different positioning technique hopefully we could further this investigation.

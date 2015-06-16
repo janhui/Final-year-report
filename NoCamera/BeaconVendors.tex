@@ -3,11 +3,12 @@
 
 \subsection{Beacon Vendors}
 
-I have decided to use the iBeacon technology pioneered by Apple as
-the underlying technology for my project. This iBeacon technology has been harnesed by companies and used in a variety of ways. The most popular use found for the iBeacon techonology is to create small hardware beacons, which are used in retail shops for GeoFencing. Where its primary use is to do targeted advertisement to users and customers.
+We have decided to use the iBeacon technology pioneered by Apple as
+the underlying technology for our project. This iBeacon technology has been harnessed by companies and used in a variety of ways. The most popular use found for the iBeacon techonology is to create small hardware beacons, which are used in retail shops for GeoFencing. 
 
-Beekn\cite{beekn} is a website that has accumulated a lot of information about iBeacons. Beekn have reviewed a lot of vendors who provide good iBeacon technology. In this section I will look at the main vendors I have
-considered and also the Intel Gallileo chip which is a more powerful chip.
+GeoFencing is a feature in software applications that use a positioning technique (eg GPS) to define geographical boundaries. The administrator of the application can set up triggers to give specific notifications when a device enters or exits that boundaries\cite{whatisgeofencing}. its primary use is to do targeted advertisement to users and customers.
+
+Beekn\cite{beekn} is a website that has accumulated a lot of information about iBeacons. Beekn have reviewed a lot of vendors who provide good iBeacon technology. In this section we will look at the some of the main vendors of beacon technology and also the Intel Gallileo chip which is a more powerful chip.
 
 
 \subsubsection{Qualcomm}
@@ -20,17 +21,18 @@ around \$5 when bought in bulk. However the main advantage is the
 robust back-end system and SDK. Gimbal was launched in 2 sizes:
 
 \begin{figure}[H]
-\includegraphics[scale=0.3]{images/gimbal-beacon}
+\centering
+\includegraphics[scale=0.2]{images/gimbal-beacon}
 
 \protect\caption{Gimbal Beacons}
 \end{figure}
 
 \begin{enumerate}
-\item Series 10: Comes in a small size, (28x40x5.6mm), and designed with
+\item \emph{Series 10}: Comes in a small size, (28x40x5.6mm), and designed with
 a loop to enable more applications. The battery life is around
 3 months and transmission rate of twice per second. It also has a
 temperature sensor on it.
-\item Series 20: Comes in a bigger size, size of a playing card. It is also
+\item \emph{Series 20}: Comes in a bigger size, size of a playing card. It is also
 more robust than the series 10. It uses replaceable AA alkaline battery
 giving it more battery life and also a higher transmission rate. Sends more packets per second.
 \end{enumerate}
@@ -51,17 +53,16 @@ beacons enjoying a large market share. Similar to the Gimbal they
 also provide two sizes. However the Estimote beacons are relatively
 more expensive than the Gimbal.
 \begin{enumerate}
-\item The main product is called the Estimote Beacon which is quite a large
-device. It's main role, is to be stationary stuck onto a wall somewhere
-i.e in a supermarket, for Geo-fence it to give targeted advertisement
-to the users depending on the location.  
-\item They have also recently brought out another product called Estimote
-Stickers. Which is more like a rival to the Gimbal series 10, its
-a smaller version of the beacon which can potentially turn any device
-into a nearable. It also has sensors such as accelerometer and
+\item The main product is called the \emph{Estimote Beacon} which is quite a large
+device. It is marketed to be stationary, and stuck onto a wall somewhere. For example in a supermarket, you can use the proximity triggers that are built onto the Beacons for Geo-fencing, to give targeted advertisement to the users.  
+\item They have also recently brought out another product called \emph{Estimote
+Stickers}. Which is more like a rival to the Gimbal series 10, its
+a smaller version of the beacon. Placing the sticker onto a device can potentially turn any device
+into a nearable, enabling the device to periodically broadcast a BLE signal. This allows devices that are observing for stickers know when the sticker reaches a certain proximity. For example if you find a stray dog with a sticker on it that has been configured to broadcast the name and number of the its owner, any stranger who has the application to monitor for BLE broadcast can receive the information and the let the owner know its location. Stickers also has sensors such as accelerometer and
 temperature feedback to give a more detailed information on the activity and
 the location of the device it's stuck onto.
 \begin{figure}[H]
+\centering
 \includegraphics[scale=0.3]{images/estimote}
 
 \protect\caption{Estimote beacons}
@@ -77,16 +78,17 @@ Intel Edison\cite{intel-edision} is a tiny computer offered by Intel
 as a development system for wearable devices. It has a high performance
 dual core CPU with integrated Wi-Fi and BLE, all using very low power, allowing it to have all the capabilities of a computer but with a longer battery
 life and more portability. It is one of the main components used in
-Internet of Things (IoT). It has access to device-to-device and device-to-cloud
+Internet of Things (IoT). IoT is a network of connected devices that can transfer data over the internet without the need for human-to-human or human-to-computer interaction\cite{iot}. It has access to device-to-device and device-to-cloud
 connectivity framework enabling cross device communication and a
 cloud based, multi-tenant, time-series analytical service\cite{intel-edison}. Since it
 is a highly powerful machine with both Wi-fi and BLE support, its
-an ideal candidate for the beacons I need for my research. However
-due to its relatively low battery life (around 1 day) and the having
-more power and facilities than I need, I have not used the Edison.
+an ideal candidate as beacon for our research. However
+due to its relatively low battery life (around 1 day) and having
+more power and facilities than required, we have not used the Edison.
 
 
 \begin{figure}[H]
+\centering
 \includegraphics{images/intel-edison-560}
 \protect\caption{Intel Edison}
 \end{figure}
